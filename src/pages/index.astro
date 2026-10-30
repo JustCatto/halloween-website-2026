@@ -81,11 +81,6 @@ const verificationUrl = "/verify";
 
                 <section class="page-heading" aria-labelledby="page-title">
                     <div>
-                        <div class="eyebrow">
-                            <span class="eyebrow-line"></span> INTERNAL
-                            PERSONNEL DATABASE{" "}
-                            <span class="heading-index">// FILE 007</span>
-                        </div>
                         <h1 id="page-title">
                             PERSONNEL <span>VERIFICATION</span>
                         </h1>
@@ -100,6 +95,7 @@ const verificationUrl = "/verify";
                     class="telemetry-panel"
                     id="security-monitor"
                     aria-labelledby="telemetry-title"
+                    hidden
                 >
                     <div class="telemetry-heading">
                         <h2 id="telemetry-title">
@@ -161,121 +157,8 @@ const verificationUrl = "/verify";
                             </div>
                         </div>
                         <div class="dossier-body">
-                            <div class="portrait-column">
-                                <div
-                                    class="portrait-frame"
-                                    role="img"
-                                    aria-label="Redacted silhouette portrait of Rick A."
-                                >
-                                    <div class="portrait-topline">
-                                        <span>SUBJECT IMAGE</span>
-                                        <span>01 / 01</span>
-                                    </div>
-                                    <svg
-                                        class="portrait-art"
-                                        viewBox="0 0 240 272"
-                                        preserveAspectRatio="xMidYMid slice"
-                                        aria-hidden="true"
-                                    >
-                                        <defs>
-                                            <radialGradient id="glow">
-                                                <stop stop-color="#6b342f" />
-                                                <stop
-                                                    offset="1"
-                                                    stop-color="#1b2421"
-                                                />
-                                            </radialGradient>
-                                            <linearGradient
-                                                id="figure"
-                                                x1="0"
-                                                y1="0"
-                                                x2="1"
-                                                y2="1"
-                                            >
-                                                <stop stop-color="#3b4540" />
-                                                <stop
-                                                    offset="1"
-                                                    stop-color="#121917"
-                                                />
-                                            </linearGradient>
-                                        </defs>
-                                        <path
-                                            fill="url(#glow)"
-                                            d="M0 0h240v272H0z"
-                                        />
-                                        <path
-                                            stroke="#b65a4e"
-                                            stroke-opacity=".17"
-                                            d="M0 54h240M0 108h240M0 162h240M0 216h240M48 0v272M96 0v272M144 0v272M192 0v272"
-                                        />
-                                        <circle
-                                            cx="120"
-                                            cy="108"
-                                            r="77"
-                                            fill="none"
-                                            stroke="#a9584b"
-                                            stroke-opacity=".25"
-                                        />
-                                        <circle
-                                            cx="120"
-                                            cy="108"
-                                            r="98"
-                                            fill="none"
-                                            stroke="#a9584b"
-                                            stroke-opacity=".14"
-                                        />
-                                        <path
-                                            d="M105 154h30l8 27 39 17c23 11 35 32 38 74H20c3-42 15-63 38-74l39-17 8-27Z"
-                                            fill="url(#figure)"
-                                        />
-                                        <path
-                                            d="m97 181 23 46 23-46-10-12h-26l-10 12Z"
-                                            fill="#222b27"
-                                        />
-                                        <path
-                                            d="m113 184 7 13 7-13-7-8-7 8Z"
-                                            fill="#8e453e"
-                                        />
-                                        <path
-                                            d="m120 197-9 43 9 16 9-16-9-43Z"
-                                            fill="#75372f"
-                                        />
-                                        <path
-                                            d="M82 100c0-37 13-57 38-57s38 20 38 57v15c0 26-17 51-38 51s-38-25-38-51v-15Z"
-                                            fill="#323b36"
-                                        />
-                                        <path
-                                            d="M81 103c-3-48 17-68 44-67 27 1 40 20 36 67-4-13-9-22-18-28-18 11-36 11-56 6-1 7-3 14-6 22Z"
-                                            fill="#18211e"
-                                        />
-                                        <path
-                                            d="M64 192 91 180l29 76-37-32-19-32Zm112 0-27-12-29 76 37-32 19-32Z"
-                                            fill="#45504a"
-                                        />
-                                        <path
-                                            d="M24 142h192M120 18v220"
-                                            stroke="#d66d5d"
-                                            stroke-opacity=".14"
-                                            stroke-dasharray="3 5"
-                                        />
-                                        <path
-                                            d="M11 11h19M11 11v19M229 11h-19M229 11v19M11 261h19M11 261v-19M229 261h-19M229 261v-19"
-                                            stroke="#e98472"
-                                            stroke-opacity=".55"
-                                            stroke-width="2"
-                                        />
-                                    </svg>
-                                    <div class="redacted-band">
-                                        IMAGE PARTIALLY REDACTED
-                                    </div>
-                                    <div class="portrait-bottomline">
-                                        <span>CAM 04 // ARCHIVE</span>
-                                        <span>CI-SEC</span>
-                                    </div>
-                                </div>
-                                <div class="photo-caption">
-                                    <span>▲</span> LAST KNOWN IMAGE ON FILE
-                                </div>
+                            <div class="redacted-placeholder">
+                                IMAGE REDACTED
                             </div>
                             <div class="identity-column">
                                 <div class="identity-top">
@@ -326,7 +209,7 @@ const verificationUrl = "/verify";
                                         <strong>
                                             <time
                                                 id="last-seen"
-                                                aria-label="Last seen at a recent local time"
+                                                aria-live="polite"
                                             >
                                                 <span class="last-seen-date">
                                                     SYNCING
@@ -338,6 +221,10 @@ const verificationUrl = "/verify";
                                                         --:--
                                                     </span>
                                                 </span>
+                                                <span
+                                                    class="last-seen-beacon"
+                                                    aria-hidden="true"
+                                                ></span>
                                             </time>
                                         </strong>
                                     </div>
@@ -396,9 +283,23 @@ const verificationUrl = "/verify";
                                 </span>
                             </div>
                             <p class="verify-intro">
-                                Scan the encrypted credential below to
-                                authenticate this personnel record.
+                                Verify this personnel record through the secure
+                                portal
+                                <span class="scan-instruction">
+                                    , or scan the credential below
+                                </span>
+                                .
                             </p>
+                            <a
+                                class="verify-button"
+                                href={verificationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                OPEN VERIFICATION PORTAL{" "}
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                            <p class="verify-small">OR SCAN THE CODE BELOW</p>
                             <a
                                 class="qr-link"
                                 href={verificationUrl}
@@ -421,18 +322,6 @@ const verificationUrl = "/verify";
                                 <span class="scan-line"></span> SCAN TO VERIFY{" "}
                                 <span class="scan-line"></span>
                             </div>
-                            <p class="verify-small">
-                                Or use the direct verification link below.
-                            </p>
-                            <a
-                                class="verify-button"
-                                href={verificationUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                OPEN VERIFICATION PORTAL{" "}
-                                <span aria-hidden="true">↗</span>
-                            </a>
                             <div class="verify-footer">
                                 <span class="online-dot"></span> ENCRYPTED
                                 CHANNEL ACTIVE <span>◈ 256-BIT</span>
@@ -440,22 +329,51 @@ const verificationUrl = "/verify";
                         </section>
                         <section
                             class="access-panel panel"
+                            id="access-warning"
                             aria-labelledby="access-title"
                         >
-                            <div class="access-symbol" aria-hidden="true">
-                                ⛨
+                            <div class="access-panel-heading">
+                                <h2 id="access-title">
+                                    ACCESS WARNING // CLEARANCE REQUIRED
+                                </h2>
+                                <div class="access-actions">
+                                    <span class="warning-badge">WARNING</span>
+                                    <button
+                                        class="access-dismiss"
+                                        id="dismiss-access-warning"
+                                        type="button"
+                                        aria-label="Dismiss access warning"
+                                    >
+                                        ×
+                                    </button>
+                                </div>
                             </div>
-                            <div>
-                                <h2 id="access-title">ACCESS WARNING</h2>
-                                <p>
-                                    This record is classified Level 7.
-                                    Unauthorized access or distribution is
-                                    strictly prohibited.
-                                </p>
-                            </div>
+                            <p class="access-main">
+                                Level 7 clearance is required for this record.
+                            </p>
+                            <p class="access-detail">
+                                Personnel file CI-07-1031-8842 is restricted to
+                                authorized staff.
+                            </p>
+                            <p class="access-alert">
+                                UNAUTHORISED ACCESS WILL TRIGGER A SECURITY
+                                RESPONSE
+                            </p>
                         </section>
+                        <button
+                            class="access-trigger"
+                            id="show-access-warning"
+                            type="button"
+                            aria-label="Show access warning"
+                            aria-controls="access-warning"
+                            aria-expanded="false"
+                            title="Access warning"
+                            hidden
+                        >
+                            <span aria-hidden="true">⚠︎</span>
+                        </button>
                         <div class="sidebar-index">
-                            CI-SD / AUTHORIZATION REQUIRED <span>07—31</span>
+                            CI-SD // AUTHORIZATION REQUIRED
                         </div>
                     </aside>
                 </div>
@@ -482,9 +400,8 @@ const verificationUrl = "/verify";
             const lastSeenDate = lastSeen?.querySelector(".last-seen-date");
             const lastSeenTime = lastSeen?.querySelector(".last-seen-time");
             const lastAccess = document.getElementById("last-access");
-            const minutesAgo = 2 + Math.floor(Math.random() * 5);
-            const getLastSeen = (now: Date) =>
-                new Date(now.getTime() - minutesAgo * 60_000);
+            const minutesAgo = 15 + Math.floor(Math.random() * 11);
+            let seenAt = new Date(Date.now() - minutesAgo * 60_000);
             const dateFormatter = new Intl.DateTimeFormat("en-US", {
                 month: "short",
                 day: "2-digit",
@@ -502,30 +419,28 @@ const verificationUrl = "/verify";
                 hour12: false,
             });
 
+            const updateClock = () => {
+                if (!clock || !date || !time) return;
+                const now = new Date();
+                date.textContent = dateFormatter.format(now).toUpperCase();
+                time.textContent = timeFormatter.format(now);
+                clock.setAttribute("datetime", now.toISOString());
+            };
+            const updateLastSeen = () => {
+                if (!lastSeen || !lastSeenDate || !lastSeenTime) return;
+                lastSeenDate.textContent = dateFormatter
+                    .format(seenAt)
+                    .toUpperCase();
+                const seenTime = lastSeenFormatter.format(seenAt);
+                lastSeenTime.textContent = seenTime;
+                lastSeen.setAttribute("datetime", seenAt.toISOString());
+                if (lastAccess) {
+                    lastAccess.textContent = seenTime;
+                    lastAccess.setAttribute("datetime", seenAt.toISOString());
+                }
+            };
+            updateLastSeen();
             if (clock && date && time) {
-                const updateClock = () => {
-                    const now = new Date();
-                    date.textContent = dateFormatter.format(now).toUpperCase();
-                    time.textContent = timeFormatter.format(now);
-                    clock.setAttribute("datetime", now.toISOString());
-
-                    if (lastSeen && lastSeenDate && lastSeenTime) {
-                        const seenAt = getLastSeen(now);
-                        lastSeenDate.textContent = dateFormatter
-                            .format(seenAt)
-                            .toUpperCase();
-                        const seenTime = lastSeenFormatter.format(seenAt);
-                        lastSeenTime.textContent = seenTime;
-                        lastSeen.setAttribute("datetime", seenAt.toISOString());
-                        if (lastAccess) {
-                            lastAccess.textContent = seenTime;
-                            lastAccess.setAttribute(
-                                "datetime",
-                                seenAt.toISOString(),
-                            );
-                        }
-                    }
-                };
                 updateClock();
                 setInterval(updateClock, 1000);
             }
@@ -534,20 +449,153 @@ const verificationUrl = "/verify";
             const dismissAlert = document.getElementById("dismiss-telemetry");
             const showAlert = document.getElementById("show-telemetry");
 
-            dismissAlert?.addEventListener("click", () => {
-                if (!monitor || !showAlert) return;
-                monitor.hidden = true;
-                showAlert.hidden = false;
-                showAlert.setAttribute("aria-expanded", "false");
-                showAlert.focus();
-            });
-            showAlert?.addEventListener("click", () => {
-                if (!monitor || !dismissAlert) return;
-                monitor.hidden = false;
-                showAlert.hidden = true;
-                showAlert.setAttribute("aria-expanded", "true");
-                dismissAlert.focus();
-            });
+            if (monitor && dismissAlert && showAlert) {
+                let dismissTimer: ReturnType<typeof setTimeout>;
+                let exitTimer: ReturnType<typeof setTimeout>;
+                const dismissMonitor = (moveFocus = false) => {
+                    clearTimeout(dismissTimer);
+                    if (
+                        monitor.hidden ||
+                        monitor.classList.contains("is-dismissing")
+                    )
+                        return;
+                    const focusWasInside = monitor.contains(
+                        document.activeElement,
+                    );
+                    const finishDismissal = () => {
+                        monitor.hidden = true;
+                        monitor.classList.remove("is-dismissing");
+                        showAlert.hidden = false;
+                        showAlert.setAttribute("aria-expanded", "false");
+                        if (moveFocus || focusWasInside) showAlert.focus();
+                    };
+                    if (
+                        window.matchMedia("(prefers-reduced-motion: reduce)")
+                            .matches
+                    ) {
+                        finishDismissal();
+                    } else {
+                        monitor.classList.add("is-dismissing");
+                        exitTimer = setTimeout(finishDismissal, 250);
+                    }
+                };
+                const scheduleDismiss = () => {
+                    clearTimeout(dismissTimer);
+                    dismissTimer = setTimeout(() => dismissMonitor(), 5000);
+                };
+
+                dismissAlert.addEventListener("click", () =>
+                    dismissMonitor(true),
+                );
+                showAlert.addEventListener("click", () => {
+                    clearTimeout(exitTimer);
+                    monitor.classList.remove("is-dismissing");
+                    monitor.hidden = false;
+                    showAlert.hidden = true;
+                    showAlert.setAttribute("aria-expanded", "true");
+                    dismissAlert.focus();
+                    scheduleDismiss();
+                });
+                const statusBlock = document.querySelector(".status-block");
+                if (statusBlock) {
+                    let revealTimer: ReturnType<typeof setTimeout> | undefined;
+                    const observer = new IntersectionObserver(
+                        (entries) => {
+                            if (
+                                !entries.some(
+                                    (entry) => entry.intersectionRatio >= 0.5,
+                                )
+                            ) {
+                                clearTimeout(revealTimer);
+                                revealTimer = undefined;
+                                return;
+                            }
+                            if (revealTimer !== undefined) return;
+                            const revealDelay =
+                                1000 + Math.floor(Math.random() * 2001);
+                            revealTimer = setTimeout(() => {
+                                revealTimer = undefined;
+                                const rect =
+                                    statusBlock.getBoundingClientRect();
+                                const visibleHeight = Math.max(
+                                    0,
+                                    Math.min(rect.bottom, window.innerHeight) -
+                                        Math.max(rect.top, 0),
+                                );
+                                if (visibleHeight < rect.height / 2) return;
+                                observer.disconnect();
+                                seenAt = new Date();
+                                updateLastSeen();
+                                lastSeen?.classList.add("is-updated");
+                                monitor.hidden = false;
+                                scheduleDismiss();
+                            }, revealDelay);
+                        },
+                        { threshold: 0.5 },
+                    );
+                    observer.observe(statusBlock);
+                }
+            }
+
+            const accessPanel = document.getElementById("access-warning");
+            const accessTrigger = document.getElementById(
+                "show-access-warning",
+            );
+            const accessDismiss = document.getElementById(
+                "dismiss-access-warning",
+            );
+            if (accessPanel && accessTrigger && accessDismiss) {
+                let accessExitTimer: ReturnType<typeof setTimeout>;
+                let accessDismissTimer: ReturnType<typeof setTimeout>;
+                const closeAccess = (moveFocus = false) => {
+                    clearTimeout(accessDismissTimer);
+                    if (
+                        accessPanel.hidden ||
+                        accessPanel.classList.contains("is-dismissing")
+                    )
+                        return;
+                    const focusWasInside = accessPanel.contains(
+                        document.activeElement,
+                    );
+                    const finishDismissal = () => {
+                        accessPanel.hidden = true;
+                        accessPanel.classList.remove("is-dismissing");
+                        accessTrigger.hidden = false;
+                        accessTrigger.setAttribute("aria-expanded", "false");
+                        if (moveFocus || focusWasInside) accessTrigger.focus();
+                    };
+                    if (
+                        window.matchMedia("(prefers-reduced-motion: reduce)")
+                            .matches
+                    ) {
+                        finishDismissal();
+                    } else {
+                        accessPanel.classList.add("is-dismissing");
+                        accessExitTimer = setTimeout(finishDismissal, 250);
+                    }
+                };
+                const scheduleAccessDismiss = () => {
+                    clearTimeout(accessDismissTimer);
+                    accessDismissTimer = setTimeout(() => closeAccess(), 5000);
+                };
+                accessTrigger.addEventListener("click", () => {
+                    clearTimeout(accessExitTimer);
+                    accessPanel.classList.remove("is-dismissing");
+                    accessPanel.hidden = false;
+                    accessTrigger.hidden = true;
+                    accessTrigger.setAttribute("aria-expanded", "true");
+                    accessDismiss.focus();
+                    scheduleAccessDismiss();
+                });
+                accessDismiss.addEventListener("click", () =>
+                    closeAccess(true),
+                );
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape" && !accessPanel.hidden)
+                        closeAccess(true);
+                });
+                scheduleAccessDismiss();
+            }
         </script>
     </body>
 </html>
@@ -688,7 +736,7 @@ const verificationUrl = "/verify";
         display: flex;
         align-items: center;
         gap: 12px;
-        padding-top: 34px;
+        padding-top: 22px;
         color: #728077;
         font:
             10px "DM Mono",
@@ -702,30 +750,7 @@ const verificationUrl = "/verify";
         color: #c4d2bd;
     }
     .page-heading {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 24px;
-        margin: 58px 0 34px;
-    }
-    .eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-        color: #aac098;
-        font:
-            11px "DM Mono",
-            monospace;
-        letter-spacing: 0.16em;
-    }
-    .eyebrow-line {
-        width: 23px;
-        height: 1px;
-        background: #a8c291;
-    }
-    .heading-index {
-        color: #607165;
-        letter-spacing: 0.04em;
+        margin: 28px 0 22px;
     }
     h1,
     h2,
@@ -733,7 +758,7 @@ const verificationUrl = "/verify";
         margin: 0;
     }
     h1 {
-        margin: 12px 0 8px;
+        margin: 0 0 8px;
         font:
             700 clamp(48px, 5.3vw, 76px)/0.98 "Barlow Condensed",
             sans-serif;
@@ -793,8 +818,8 @@ const verificationUrl = "/verify";
         border-bottom: 1px solid #495840;
     }
     .panel-title-row {
-        min-height: 62px;
-        padding: 0 25px;
+        min-height: 56px;
+        padding: 0 23px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -803,7 +828,7 @@ const verificationUrl = "/verify";
     }
     .dossier .panel-title-row {
         flex-wrap: wrap;
-        padding-block: 12px;
+        padding-block: 10px;
     }
     .section-label {
         display: flex;
@@ -825,88 +850,18 @@ const verificationUrl = "/verify";
     }
 
     .dossier-body {
-        display: grid;
-        grid-template-columns: 221px minmax(0, 1fr);
-        gap: 29px;
-        padding: 28px 27px 30px;
+        padding: 22px 23px 24px;
     }
-    .portrait-frame {
-        position: relative;
-        height: 266px;
-        overflow: hidden;
-        background: #29362e;
-        border: 1px solid #60705d;
-    }
-    .portrait-art {
-        width: 100%;
-        height: 100%;
-        display: block;
-        filter: saturate(0.78);
-    }
-    .portrait-frame:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent 0 3px,
-            #0002 4px 5px
-        );
-        opacity: 0.45;
-    }
-    .portrait-topline,
-    .portrait-bottomline {
-        position: absolute;
-        z-index: 2;
-        left: 10px;
-        right: 10px;
-        display: flex;
-        justify-content: space-between;
+    .redacted-placeholder {
+        margin-bottom: 18px;
+        padding: 8px 11px;
+        border-left: 2px solid #ab665a;
+        background: #1b2420;
+        color: #d7b3a5;
         font:
-            8px "DM Mono",
+            500 10px "DM Mono",
             monospace;
-        letter-spacing: 0.06em;
-        color: #d9d8c7;
-        text-shadow: 0 1px 3px #000;
-    }
-    .portrait-topline {
-        top: 11px;
-    }
-    .portrait-bottomline {
-        bottom: 10px;
-    }
-    .redacted-band {
-        position: absolute;
-        z-index: 2;
-        top: 45%;
-        left: -2px;
-        right: -2px;
-        padding: 9px 3px;
-        background: #141a19e8;
-        border-top: 1px solid #a16a59;
-        border-bottom: 1px solid #a16a59;
-        text-align: center;
-        color: #ead2c5;
-        font:
-            9px "DM Mono",
-            monospace;
-        letter-spacing: 0.11em;
-        transform: rotate(-4deg);
-    }
-    .photo-caption {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        margin-top: 12px;
-        color: #697b6d;
-        font:
-            9px "DM Mono",
-            monospace;
-        letter-spacing: 0.04em;
-    }
-    .photo-caption span {
-        color: #a46e55;
+        letter-spacing: 0.1em;
     }
     .identity-top {
         display: flex;
@@ -988,6 +943,23 @@ const verificationUrl = "/verify";
         color: #7d8e80;
         font-weight: 400;
     }
+    #last-seen.is-updated,
+    #last-seen.is-updated .field-muted {
+        color: #f05a5c;
+    }
+    .last-seen-beacon {
+        display: none;
+        width: 7px;
+        height: 7px;
+        margin-left: 7px;
+        border-radius: 50%;
+        background: #f05a5c;
+        box-shadow: 0 0 9px #f05a5c;
+        vertical-align: middle;
+    }
+    #last-seen.is-updated .last-seen-beacon {
+        display: inline-block;
+    }
     .status-block {
         margin-top: 21px;
         background: #2d211e;
@@ -1027,8 +999,8 @@ const verificationUrl = "/verify";
             sans-serif;
     }
     .notes-block {
-        margin: 0 27px 26px;
-        padding: 17px 20px 18px;
+        margin: 0 23px 22px;
+        padding: 15px 18px;
         background: #28221d;
         border: 1px solid #6b5440;
     }
@@ -1179,7 +1151,7 @@ const verificationUrl = "/verify";
         background: #526853;
     }
     .verify-small {
-        margin: 24px 0 12px;
+        margin: 18px 0 8px;
         color: #7e9080;
         font-size: 11px;
         text-align: center;
@@ -1188,7 +1160,7 @@ const verificationUrl = "/verify";
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 0 23px 23px;
+        margin: 18px 23px 0;
         padding: 15px 17px;
         border: 1px solid #9db587;
         color: #d9ead0;
@@ -1230,29 +1202,78 @@ const verificationUrl = "/verify";
         color: #647765;
     }
     .access-panel {
-        display: flex;
-        gap: 15px;
-        padding: 20px 21px;
-        background: #1d211a;
-        border-color: #514d39;
+        position: fixed;
+        z-index: 11;
+        left: 24px;
+        bottom: 24px;
+        width: min(440px, calc(100vw - 48px));
+        max-height: calc(100dvh - 48px);
+        overflow: auto;
+        padding: 21px 26px 23px;
+        border: 1px solid #6c583d;
+        border-left: 3px solid #c19755;
+        background: #090b0c;
+        box-shadow:
+            0 20px 60px #000b,
+            0 0 28px #c1975518;
     }
-    .access-symbol {
-        color: #c7a970;
-        font-size: 26px;
+    .access-panel[hidden] {
+        display: none;
+    }
+
+    .access-trigger {
+        position: fixed;
+        z-index: 11;
+        left: 24px;
+        bottom: 24px;
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 44px;
+        border: 1px solid #a48148;
+        background: #33291b;
+        box-shadow: 0 12px 30px #0009;
+        color: #e9c078;
+        font-size: 27px;
         line-height: 1;
+        cursor: pointer;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease;
     }
-    .access-panel h2 {
-        color: #d6b77f;
+    .access-trigger[hidden] {
+        display: none;
+    }
+    .access-trigger:hover {
+        background: #493821;
+        border-color: #dfb975;
+    }
+    .access-trigger:focus-visible,
+    .access-dismiss:focus-visible {
+        outline: 2px solid #e9c078;
+        outline-offset: 3px;
+    }
+    .access-dismiss {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        margin-left: auto;
+        padding: 0;
+        border: 1px solid #665741;
+        background: transparent;
+        color: #b8ad9c;
         font:
-            600 12px "Barlow Condensed",
+            20px/1 "DM Sans",
             sans-serif;
-        letter-spacing: 0.15em;
+        cursor: pointer;
+        transition:
+            border-color 0.2s ease,
+            color 0.2s ease;
     }
-    .access-panel p {
-        margin-top: 7px;
-        color: #a29f87;
-        font-size: 11px;
-        line-height: 1.55;
+    .access-dismiss:hover {
+        border-color: #dfb975;
+        color: #ffe0a2;
     }
     .sidebar-index {
         display: flex;
@@ -1292,6 +1313,7 @@ const verificationUrl = "/verify";
         display: flex;
         align-items: center;
         gap: 10px;
+        height: 44px;
         padding: 12px 15px;
         border: 1px solid #80504b;
         background: #211514;
@@ -1322,14 +1344,16 @@ const verificationUrl = "/verify";
         background: #ed5757;
         box-shadow: 0 0 9px #ed5757;
     }
-    .telemetry-heading {
+    .telemetry-heading,
+    .access-panel-heading {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 14px;
         margin-bottom: 17px;
     }
-    .telemetry-actions {
+    .telemetry-actions,
+    .access-actions {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -1360,14 +1384,16 @@ const verificationUrl = "/verify";
         outline: 2px solid #f1b3ad;
         outline-offset: 3px;
     }
-    .telemetry-heading h2 {
+    .telemetry-heading h2,
+    .access-panel-heading h2 {
         color: #91989b;
         font:
             500 10px "DM Mono",
             monospace;
         letter-spacing: 0.04em;
     }
-    .anomaly-badge {
+    .anomaly-badge,
+    .warning-badge {
         border-radius: 20px;
         padding: 4px 9px;
         background: #371619;
@@ -1377,22 +1403,32 @@ const verificationUrl = "/verify";
             monospace;
         letter-spacing: 0.03em;
     }
-    .telemetry-detection {
+    .warning-badge {
+        background: #382b17;
+        color: #e9c078;
+    }
+    .telemetry-detection,
+    .access-main {
         color: #d0d3d5;
         font-size: 14px;
     }
-    .telemetry-detail {
+    .telemetry-detail,
+    .access-detail {
         margin-top: 10px;
         color: #999fa1;
         font-size: 12px;
     }
-    .telemetry-alert {
+    .telemetry-alert,
+    .access-alert {
         margin-top: 10px;
         color: #f05a5c;
         font:
             500 12px "DM Mono",
             monospace;
         letter-spacing: 0.01em;
+    }
+    .access-alert {
+        color: #e9c078;
     }
     .site-footer {
         display: flex;
@@ -1424,15 +1460,25 @@ const verificationUrl = "/verify";
         .telemetry-panel {
             animation: reveal-up 0.65s 0.38s ease-out both;
         }
+        .telemetry-panel.is-dismissing {
+            pointer-events: none;
+            animation: telemetry-out 0.25s ease-in both;
+        }
         .dossier {
             animation: reveal-up 0.7s 0.58s ease-out both;
         }
         .verification {
             animation: reveal-up 0.7s 0.72s ease-out both;
         }
-        .access-panel,
         .sidebar-index {
             animation: reveal-up 0.6s 0.86s ease-out both;
+        }
+        .access-panel:not([hidden]) {
+            animation: reveal-up 0.25s ease-out both;
+        }
+        .access-panel.is-dismissing {
+            pointer-events: none;
+            animation: telemetry-out 0.25s ease-in both;
         }
         .site-footer {
             animation: reveal-up 0.6s 0.96s ease-out both;
@@ -1446,15 +1492,8 @@ const verificationUrl = "/verify";
         .reopen-dot {
             animation: beacon-pulse 1.6s ease-in-out infinite;
         }
-        .portrait-frame::before {
-            content: "";
-            position: absolute;
-            z-index: 1;
-            inset: -45% 0 auto;
-            height: 40%;
-            background: linear-gradient(transparent, #c1d6b429, transparent);
-            pointer-events: none;
-            animation: portrait-scan 1.4s 1.1s ease-in-out both;
+        #last-seen.is-updated .last-seen-beacon {
+            animation: last-seen-flash 1.2s ease-in-out infinite;
         }
     }
     @keyframes reveal-up {
@@ -1477,9 +1516,21 @@ const verificationUrl = "/verify";
             transform: translateY(0);
         }
     }
+    @keyframes telemetry-out {
+        to {
+            opacity: 0;
+            transform: translateY(8px) scale(0.98);
+        }
+    }
     @keyframes alert-glow {
         50% {
             box-shadow: 0 0 16px #ed575766;
+        }
+    }
+    @keyframes last-seen-flash {
+        50% {
+            opacity: 0.15;
+            box-shadow: none;
         }
     }
     @keyframes beacon-pulse {
@@ -1495,25 +1546,16 @@ const verificationUrl = "/verify";
             box-shadow: 0 0 7px 1px currentColor;
         }
     }
-    @keyframes portrait-scan {
-        to {
-            transform: translateY(430%);
-        }
-    }
+
     @media (max-width: 1050px) {
         .content-grid {
             grid-template-columns: minmax(0, 1fr) 310px;
         }
         .dossier-body {
-            grid-template-columns: 180px minmax(0, 1fr);
-            gap: 20px;
-            padding: 23px;
-        }
-        .portrait-frame {
-            height: 239px;
+            padding: 20px;
         }
         .notes-block {
-            margin-inline: 23px;
+            margin-inline: 20px;
         }
         .field-grid {
             gap: 0 8px;
@@ -1539,7 +1581,7 @@ const verificationUrl = "/verify";
             display: none;
         }
         .page-heading {
-            margin-top: 42px;
+            margin-top: 26px;
         }
         .verification {
             grid-row: span 2;
@@ -1580,25 +1622,17 @@ const verificationUrl = "/verify";
             padding: 0 18px;
         }
         .breadcrumb {
-            padding-top: 24px;
+            padding-top: 18px;
             font-size: 8px;
             gap: 7px;
         }
         .page-heading {
-            display: block;
-            margin: 39px 0 25px;
-        }
-        .eyebrow {
-            font-size: 9px;
-            gap: 7px;
-        }
-        .eyebrow-line {
-            width: 15px;
+            margin: 22px 0 18px;
         }
         h1 {
             font-size: clamp(47px, 12vw, 66px);
             line-height: 0.94;
-            margin-top: 15px;
+            margin-top: 0;
         }
         .page-heading p {
             font-size: 12px;
@@ -1608,21 +1642,9 @@ const verificationUrl = "/verify";
             gap: 16px;
         }
         .dossier-body {
-            grid-template-columns: 1fr;
-            gap: 23px;
-            padding: 20px;
+            padding: 16px;
         }
-        .portrait-column {
-            max-width: 260px;
-            width: 100%;
-            margin: auto;
-        }
-        .portrait-frame {
-            height: 275px;
-        }
-        .photo-caption {
-            justify-content: center;
-        }
+
         .identity-top {
             align-items: center;
         }
@@ -1634,8 +1656,8 @@ const verificationUrl = "/verify";
             font-size: 11px;
         }
         .notes-block {
-            margin: 0 20px 20px;
-            padding: 16px;
+            margin: 0 16px 16px;
+            padding: 14px;
         }
         .notes-code {
             font-size: 8px;
@@ -1654,9 +1676,19 @@ const verificationUrl = "/verify";
         }
         .sidebar {
             display: flex;
+            order: -1;
         }
         .sidebar-index {
             display: flex;
+        }
+        .scan-instruction,
+        .verify-small,
+        .qr-link,
+        .scan-caption {
+            display: none;
+        }
+        .verify-button {
+            margin-bottom: 20px;
         }
         .telemetry-panel {
             top: 84px;
@@ -1671,13 +1703,27 @@ const verificationUrl = "/verify";
             right: 16px;
             bottom: 16px;
         }
-        .telemetry-heading h2 {
+        .access-trigger {
+            left: 16px;
+            bottom: 16px;
+        }
+        .access-panel {
+            left: 16px;
+            bottom: 16px;
+            width: calc(100vw - 32px);
+            max-height: calc(100dvh - 110px);
+            padding: 19px 17px;
+        }
+        .telemetry-heading h2,
+        .access-panel-heading h2 {
             font-size: 9px;
         }
-        .telemetry-detection {
+        .telemetry-detection,
+        .access-main {
             font-size: 13px;
         }
-        .telemetry-alert {
+        .telemetry-alert,
+        .access-alert {
             font-size: 10px;
         }
         .site-footer {

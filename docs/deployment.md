@@ -1,0 +1,7 @@
+# Deployment
+
+`pnpm build` creates static output in `dist/`. `wrangler.jsonc` configures Cloudflare Workers static assets from `./dist` with `html_handling: "drop-trailing-slash"`, compatibility date `2026-10-30`, and custom-domain routes for `id.cattoindustries.com` and `www.id.cattoindustries.com`. `wrangler` is a local dev dependency. No CI/CD workflow, deployment script, confirmed live deployment, or account/environment setup is present in the repository.
+
+For a manual deploy, install dependencies, build, then use `pnpm exec wrangler deploy` with an authorized Cloudflare account and the required external credentials/domain configuration. This is a procedure implied by the Wrangler config, **not a verified deployment**. Do not commit account credentials or environment values. The repository's `.gitignore` excludes `.env*`, `.dev.vars`, `.wrangler/`, and generated output.
+
+The QR in `public/verification-qr.svg` embeds the absolute production URL `https://id.cattoindustries.com/verify`. If the public domain changes, regenerate the QR and verify its encoded destination; homepage links instead use `/verify`. Both pages request Google Fonts from `fonts.googleapis.com` / `fonts.gstatic.com`; reveal media is served from `public/`. External media provenance and licensing caveats are in [README.md](../README.md). There is no application-specific monitoring, incident recovery, or server audit pipeline in this static site.
