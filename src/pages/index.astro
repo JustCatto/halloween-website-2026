@@ -124,7 +124,8 @@ const verificationUrl = "/verify";
                         Status mismatch: Subject declared deceased.
                     </p>
                     <p class="telemetry-alert">
-                        LAST ACCESS: 00:03 // LOCATION UNKNOWN
+                        LAST ACCESS: <time id="last-access">--:--</time> //
+                        LOCATION UNKNOWN
                     </p>
                 </section>
                 <button
@@ -480,6 +481,7 @@ const verificationUrl = "/verify";
             const lastSeen = document.getElementById("last-seen");
             const lastSeenDate = lastSeen?.querySelector(".last-seen-date");
             const lastSeenTime = lastSeen?.querySelector(".last-seen-time");
+            const lastAccess = document.getElementById("last-access");
             const minutesAgo = 2 + Math.floor(Math.random() * 5);
             const getLastSeen = (now: Date) =>
                 new Date(now.getTime() - minutesAgo * 60_000);
@@ -512,9 +514,16 @@ const verificationUrl = "/verify";
                         lastSeenDate.textContent = dateFormatter
                             .format(seenAt)
                             .toUpperCase();
-                        lastSeenTime.textContent =
-                            lastSeenFormatter.format(seenAt);
+                        const seenTime = lastSeenFormatter.format(seenAt);
+                        lastSeenTime.textContent = seenTime;
                         lastSeen.setAttribute("datetime", seenAt.toISOString());
+                        if (lastAccess) {
+                            lastAccess.textContent = seenTime;
+                            lastAccess.setAttribute(
+                                "datetime",
+                                seenAt.toISOString(),
+                            );
+                        }
                     }
                 };
                 updateClock();
