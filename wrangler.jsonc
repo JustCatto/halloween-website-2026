@@ -1,0 +1,20 @@
+{
+  "name": "halloween-website",
+  "compatibility_date": "2026-10-30",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "drop-trailing-slash"
+  },
+  "routes": [
+    {
+      "pattern": "id.cattoindustries.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.id.cattoindustries.com",
+      "custom_domain": true
+    }
+
+  ]
+
+}

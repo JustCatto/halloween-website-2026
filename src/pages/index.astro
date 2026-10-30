@@ -1,0 +1,1696 @@
+---
+const verificationUrl = "/verify";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0b100e" />
+        <meta
+            name="description"
+            content="A fictional Halloween personnel verification dossier from Catto Industries."
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>Personnel Verification | Catto Industries</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="site-shell">
+            <header class="site-header">
+                <div class="header-inner">
+                    <a
+                        class="brand"
+                        href="/"
+                        aria-label="Catto Industries home"
+                    >
+                        <span class="brand-mark" aria-hidden="true">
+                            <svg viewBox="0 0 42 42" fill="none">
+                                <path
+                                    d="M21 2 38 11.5v19L21 40 4 30.5v-19L21 2Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                />
+                                <path
+                                    d="M27.5 14.5c-1.6-1.4-3.6-2.1-6-2.1-5 0-8.4 3.6-8.4 8.6s3.4 8.6 8.4 8.6c2.4 0 4.4-.7 6-2.1"
+                                    stroke="currentColor"
+                                    stroke-width="3"
+                                    stroke-linecap="square"
+                                />
+                                <path
+                                    d="M30 11v7M33.5 14.5h-7"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                />
+                            </svg>
+                        </span>
+                        <span class="brand-name">
+                            CATTO <strong>INDUSTRIES</strong>
+                            <small>SECURITY & CONTAINMENT DIVISION</small>
+                        </span>
+                    </a>
+                    <div class="header-meta">
+                        <span class="online-dot"></span>
+                        <span class="system-label">SYSTEM ONLINE</span>
+                        <span class="meta-divider"></span>
+                        <time
+                            id="system-clock"
+                            aria-label="Current local date and time"
+                        >
+                            <span class="system-date">SYNCING</span>
+                            <span class="system-time">--:--:--</span>
+                        </time>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <div class="breadcrumb">
+                    <span>CATTO INDUSTRIES</span>
+                    <span class="slash">/</span>
+                    <span>SECURE RECORDS</span>
+                    <span class="slash">/</span>
+                    <span class="current">PERSONNEL FILE</span>
+                </div>
+
+                <section class="page-heading" aria-labelledby="page-title">
+                    <div>
+                        <div class="eyebrow">
+                            <span class="eyebrow-line"></span> INTERNAL
+                            PERSONNEL DATABASE{" "}
+                            <span class="heading-index">// FILE 007</span>
+                        </div>
+                        <h1 id="page-title">
+                            PERSONNEL <span>VERIFICATION</span>
+                        </h1>
+                        <p>
+                            Identity record retrieved from the Catto Industries
+                            secure archive.
+                        </p>
+                    </div>
+                </section>
+
+                <section
+                    class="telemetry-panel"
+                    id="security-monitor"
+                    aria-labelledby="telemetry-title"
+                >
+                    <div class="telemetry-heading">
+                        <h2 id="telemetry-title">
+                            CI SECURITY MONITOR // LIVE TELEMETRY
+                        </h2>
+                        <div class="telemetry-actions">
+                            <span class="anomaly-badge">ANOMALY</span>
+                            <button
+                                class="telemetry-dismiss"
+                                id="dismiss-telemetry"
+                                type="button"
+                                aria-label="Dismiss security monitor"
+                            >
+                                ×
+                            </button>
+                        </div>
+                    </div>
+                    <p class="telemetry-detection">
+                        Personnel ID CI-07-1031-8842 detected.
+                    </p>
+                    <p class="telemetry-detail">
+                        Status mismatch: Subject declared deceased.
+                    </p>
+                    <p class="telemetry-alert">
+                        LAST ACCESS: 00:03 // LOCATION UNKNOWN
+                    </p>
+                </section>
+                <button
+                    class="telemetry-reopen"
+                    id="show-telemetry"
+                    type="button"
+                    aria-controls="security-monitor"
+                    aria-expanded="false"
+                    hidden
+                >
+                    <span class="reopen-dot" aria-hidden="true"></span>
+                    SECURITY ALERT
+                    <span aria-hidden="true">↗</span>
+                </button>
+
+                <div class="content-grid">
+                    <article
+                        class="dossier panel"
+                        aria-labelledby="record-title"
+                    >
+                        <div class="hazard-stripe" aria-hidden="true"></div>
+                        <div class="panel-title-row">
+                            <div class="section-label">
+                                <span class="square-dot"></span>
+                                <h2 id="record-title">IDENTITY RECORD</h2>
+                            </div>
+                            <div class="classification-stamp">
+                                <span class="stamp-icon">✳</span>
+                                <span>
+                                    LEVEL 7<br />
+                                    <strong>RESTRICTED ACCESS</strong>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="dossier-body">
+                            <div class="portrait-column">
+                                <div
+                                    class="portrait-frame"
+                                    role="img"
+                                    aria-label="Redacted silhouette portrait of Rick A."
+                                >
+                                    <div class="portrait-topline">
+                                        <span>SUBJECT IMAGE</span>
+                                        <span>01 / 01</span>
+                                    </div>
+                                    <svg
+                                        class="portrait-art"
+                                        viewBox="0 0 240 272"
+                                        preserveAspectRatio="xMidYMid slice"
+                                        aria-hidden="true"
+                                    >
+                                        <defs>
+                                            <radialGradient id="glow">
+                                                <stop stop-color="#6b342f" />
+                                                <stop
+                                                    offset="1"
+                                                    stop-color="#1b2421"
+                                                />
+                                            </radialGradient>
+                                            <linearGradient
+                                                id="figure"
+                                                x1="0"
+                                                y1="0"
+                                                x2="1"
+                                                y2="1"
+                                            >
+                                                <stop stop-color="#3b4540" />
+                                                <stop
+                                                    offset="1"
+                                                    stop-color="#121917"
+                                                />
+                                            </linearGradient>
+                                        </defs>
+                                        <path
+                                            fill="url(#glow)"
+                                            d="M0 0h240v272H0z"
+                                        />
+                                        <path
+                                            stroke="#b65a4e"
+                                            stroke-opacity=".17"
+                                            d="M0 54h240M0 108h240M0 162h240M0 216h240M48 0v272M96 0v272M144 0v272M192 0v272"
+                                        />
+                                        <circle
+                                            cx="120"
+                                            cy="108"
+                                            r="77"
+                                            fill="none"
+                                            stroke="#a9584b"
+                                            stroke-opacity=".25"
+                                        />
+                                        <circle
+                                            cx="120"
+                                            cy="108"
+                                            r="98"
+                                            fill="none"
+                                            stroke="#a9584b"
+                                            stroke-opacity=".14"
+                                        />
+                                        <path
+                                            d="M105 154h30l8 27 39 17c23 11 35 32 38 74H20c3-42 15-63 38-74l39-17 8-27Z"
+                                            fill="url(#figure)"
+                                        />
+                                        <path
+                                            d="m97 181 23 46 23-46-10-12h-26l-10 12Z"
+                                            fill="#222b27"
+                                        />
+                                        <path
+                                            d="m113 184 7 13 7-13-7-8-7 8Z"
+                                            fill="#8e453e"
+                                        />
+                                        <path
+                                            d="m120 197-9 43 9 16 9-16-9-43Z"
+                                            fill="#75372f"
+                                        />
+                                        <path
+                                            d="M82 100c0-37 13-57 38-57s38 20 38 57v15c0 26-17 51-38 51s-38-25-38-51v-15Z"
+                                            fill="#323b36"
+                                        />
+                                        <path
+                                            d="M81 103c-3-48 17-68 44-67 27 1 40 20 36 67-4-13-9-22-18-28-18 11-36 11-56 6-1 7-3 14-6 22Z"
+                                            fill="#18211e"
+                                        />
+                                        <path
+                                            d="M64 192 91 180l29 76-37-32-19-32Zm112 0-27-12-29 76 37-32 19-32Z"
+                                            fill="#45504a"
+                                        />
+                                        <path
+                                            d="M24 142h192M120 18v220"
+                                            stroke="#d66d5d"
+                                            stroke-opacity=".14"
+                                            stroke-dasharray="3 5"
+                                        />
+                                        <path
+                                            d="M11 11h19M11 11v19M229 11h-19M229 11v19M11 261h19M11 261v-19M229 261h-19M229 261v-19"
+                                            stroke="#e98472"
+                                            stroke-opacity=".55"
+                                            stroke-width="2"
+                                        />
+                                    </svg>
+                                    <div class="redacted-band">
+                                        IMAGE PARTIALLY REDACTED
+                                    </div>
+                                    <div class="portrait-bottomline">
+                                        <span>CAM 04 // ARCHIVE</span>
+                                        <span>CI-SEC</span>
+                                    </div>
+                                </div>
+                                <div class="photo-caption">
+                                    <span>▲</span> LAST KNOWN IMAGE ON FILE
+                                </div>
+                            </div>
+                            <div class="identity-column">
+                                <div class="identity-top">
+                                    <span class="micro-label">
+                                        REGISTERED PERSONNEL
+                                    </span>
+                                    <span class="verified-tag">
+                                        <span>✦</span> RECORD FOUND
+                                    </span>
+                                </div>
+                                <div class="person-name">
+                                    RICK A<span class="period">.</span>
+                                </div>
+                                <div class="name-subtitle">
+                                    FORMER RESEARCH ASSOCIATE <span>·</span>{" "}
+                                    DIVISION 07
+                                </div>
+                                <div class="field-grid">
+                                    <div class="field">
+                                        <span class="field-label">
+                                            PERSONNEL ID NUMBER
+                                        </span>
+                                        <strong class="mono">
+                                            CI-07-1031-8842
+                                        </strong>
+                                    </div>
+                                    <div class="field">
+                                        <span class="field-label">
+                                            CLEARANCE LEVEL
+                                        </span>
+                                        <strong>
+                                            LEVEL 7{" "}
+                                            <span class="field-muted">
+                                                / RESTRICTED
+                                            </span>
+                                        </strong>
+                                    </div>
+                                    <div class="field">
+                                        <span class="field-label">
+                                            DEPARTMENT
+                                        </span>
+                                        <strong>CONTAINMENT & RESEARCH</strong>
+                                    </div>
+                                    <div class="field">
+                                        <span class="field-label">
+                                            LAST SEEN
+                                        </span>
+                                        <strong>
+                                            <time
+                                                id="last-seen"
+                                                aria-label="Last seen at a recent local time"
+                                            >
+                                                <span class="last-seen-date">
+                                                    SYNCING
+                                                </span>
+                                                <span class="field-muted">
+                                                    {" "}
+                                                    /{" "}
+                                                    <span class="last-seen-time">
+                                                        --:--
+                                                    </span>
+                                                </span>
+                                            </time>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="status-block">
+                                    <div class="status-heading">
+                                        <span class="field-label">
+                                            PERSONEL STATUS
+                                        </span>
+                                        <span class="status-pulse"></span>
+                                    </div>
+                                    <div class="status-value">
+                                        <span class="status-cross">✕</span>{" "}
+                                        PRESUMED DECEASED
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notes-block">
+                            <div class="notes-heading">
+                                <span class="warning-icon">!</span>
+                                <span>PERSONEL NOTES</span>
+                                <span class="notes-code">// HIGH PRIORITY</span>
+                            </div>
+                            <p>Subject assumed infected, do not approach!</p>
+                            <span class="notes-detail">
+                                PROTOCOL 07-C REMAINS IN EFFECT. MAINTAIN SAFE
+                                DISTANCE.
+                            </span>
+                        </div>
+                        <div class="dossier-footer">
+                            <span>
+                                DOCUMENT CLASSIFICATION: <b>CONFIDENTIAL</b>
+                            </span>
+                            <span>REF: CI/07-1031 · CI ARCHIVE // 2026</span>
+                        </div>
+                    </article>
+
+                    <aside
+                        class="sidebar"
+                        aria-label="Verification and access information"
+                    >
+                        <section
+                            class="verification panel"
+                            aria-labelledby="verify-title"
+                        >
+                            <div class="panel-title-row">
+                                <div class="section-label">
+                                    <span class="square-dot"></span>
+                                    <h2 id="verify-title">
+                                        VERIFY CREDENTIALS
+                                    </h2>
+                                </div>
+                                <span class="scan-icon" aria-hidden="true">
+                                    ⌗
+                                </span>
+                            </div>
+                            <p class="verify-intro">
+                                Scan the encrypted credential below to
+                                authenticate this personnel record.
+                            </p>
+                            <a
+                                class="qr-link"
+                                href={verificationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Open the verification QR code destination in a new tab"
+                            >
+                                <span class="qr-corner top-left"></span>
+                                <span class="qr-corner top-right"></span>
+                                <span class="qr-corner bottom-left"></span>
+                                <span class="qr-corner bottom-right"></span>
+                                <img
+                                    src="/verification-qr.svg"
+                                    alt="Scannable QR code for this fictional credential"
+                                    width="220"
+                                    height="220"
+                                />
+                            </a>
+                            <div class="scan-caption">
+                                <span class="scan-line"></span> SCAN TO VERIFY{" "}
+                                <span class="scan-line"></span>
+                            </div>
+                            <p class="verify-small">
+                                Or use the direct verification link below.
+                            </p>
+                            <a
+                                class="verify-button"
+                                href={verificationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                OPEN VERIFICATION PORTAL{" "}
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                            <div class="verify-footer">
+                                <span class="online-dot"></span> ENCRYPTED
+                                CHANNEL ACTIVE <span>◈ 256-BIT</span>
+                            </div>
+                        </section>
+                        <section
+                            class="access-panel panel"
+                            aria-labelledby="access-title"
+                        >
+                            <div class="access-symbol" aria-hidden="true">
+                                ⛨
+                            </div>
+                            <div>
+                                <h2 id="access-title">ACCESS WARNING</h2>
+                                <p>
+                                    This record is classified Level 7.
+                                    Unauthorized access or distribution is
+                                    strictly prohibited.
+                                </p>
+                            </div>
+                        </section>
+                        <div class="sidebar-index">
+                            CI-SD / AUTHORIZATION REQUIRED <span>07—31</span>
+                        </div>
+                    </aside>
+                </div>
+
+                <footer class="site-footer">
+                    <span>
+                        © 2026 CATTO INDUSTRIES{" "}
+                        <span class="footer-divider">/</span> ALL RIGHTS
+                        RESERVED
+                    </span>
+                    <span>
+                        FICTIONAL HALLOWEEN PROP{" "}
+                        <span class="footer-divider">/</span> NOT A REAL
+                        GOVERNMENT ID
+                    </span>
+                </footer>
+            </main>
+        </div>
+        <script>
+            const clock = document.getElementById("system-clock");
+            const date = clock?.querySelector(".system-date");
+            const time = clock?.querySelector(".system-time");
+            const lastSeen = document.getElementById("last-seen");
+            const lastSeenDate = lastSeen?.querySelector(".last-seen-date");
+            const lastSeenTime = lastSeen?.querySelector(".last-seen-time");
+            const minutesAgo = 2 + Math.floor(Math.random() * 5);
+            const getLastSeen = (now: Date) =>
+                new Date(now.getTime() - minutesAgo * 60_000);
+            const dateFormatter = new Intl.DateTimeFormat("en-US", {
+                month: "short",
+                day: "2-digit",
+                year: "numeric",
+            });
+            const timeFormatter = new Intl.DateTimeFormat("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false,
+            });
+            const lastSeenFormatter = new Intl.DateTimeFormat("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+            });
+
+            if (clock && date && time) {
+                const updateClock = () => {
+                    const now = new Date();
+                    date.textContent = dateFormatter.format(now).toUpperCase();
+                    time.textContent = timeFormatter.format(now);
+                    clock.setAttribute("datetime", now.toISOString());
+
+                    if (lastSeen && lastSeenDate && lastSeenTime) {
+                        const seenAt = getLastSeen(now);
+                        lastSeenDate.textContent = dateFormatter
+                            .format(seenAt)
+                            .toUpperCase();
+                        lastSeenTime.textContent =
+                            lastSeenFormatter.format(seenAt);
+                        lastSeen.setAttribute("datetime", seenAt.toISOString());
+                    }
+                };
+                updateClock();
+                setInterval(updateClock, 1000);
+            }
+
+            const monitor = document.getElementById("security-monitor");
+            const dismissAlert = document.getElementById("dismiss-telemetry");
+            const showAlert = document.getElementById("show-telemetry");
+
+            dismissAlert?.addEventListener("click", () => {
+                if (!monitor || !showAlert) return;
+                monitor.hidden = true;
+                showAlert.hidden = false;
+                showAlert.setAttribute("aria-expanded", "false");
+                showAlert.focus();
+            });
+            showAlert?.addEventListener("click", () => {
+                if (!monitor || !dismissAlert) return;
+                monitor.hidden = false;
+                showAlert.hidden = true;
+                showAlert.setAttribute("aria-expanded", "true");
+                dismissAlert.focus();
+            });
+        </script>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+    :global(html) {
+        background: #0b100e;
+    }
+    :global(body) {
+        margin: 0;
+        color: #dce2d9;
+        font-family: "DM Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    :global(a) {
+        color: inherit;
+    }
+    :global(::selection) {
+        background: #ad5144;
+        color: #fff;
+    }
+    .site-shell {
+        min-height: 100vh;
+        background:
+            radial-gradient(
+                ellipse 58% 40% at 52% 39%,
+                #1b2721 0%,
+                transparent 100%
+            ),
+            linear-gradient(rgba(126, 151, 124, 0.024) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(126, 151, 124, 0.024) 1px,
+                transparent 1px
+            ),
+            #0b100e;
+        background-size:
+            auto,
+            54px 54px,
+            54px 54px,
+            auto;
+    }
+    .site-header {
+        border-bottom: 1px solid #27342d;
+        background: rgba(12, 18, 15, 0.93);
+    }
+    .header-inner {
+        max-width: 1260px;
+        min-height: 88px;
+        padding: 0 36px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 13px;
+        text-decoration: none;
+    }
+    .brand-mark {
+        width: 43px;
+        height: 43px;
+        color: #c7d6bd;
+        display: block;
+        flex: none;
+    }
+    .brand-mark svg {
+        width: 100%;
+        height: 100%;
+    }
+    .brand-name {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 25px;
+        letter-spacing: 0.075em;
+        font-weight: 700;
+        line-height: 0.95;
+        white-space: nowrap;
+    }
+    .brand-name strong {
+        color: #b9c9b0;
+        font-weight: 500;
+    }
+    .brand-name small {
+        display: block;
+        font-family: "DM Mono", monospace;
+        color: #748278;
+        font-size: 8px;
+        letter-spacing: 0.14em;
+        margin-top: 7px;
+    }
+    .header-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #9ba99b;
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.09em;
+        white-space: nowrap;
+    }
+    #system-clock {
+        display: flex;
+        gap: 10px;
+        font-variant-numeric: tabular-nums;
+    }
+    .system-time {
+        color: #c4d2bd;
+    }
+    .online-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        color: #9bba82;
+        background: #9bba82;
+        display: inline-block;
+        box-shadow: 0 0 11px #80aa68;
+        flex: none;
+    }
+    .meta-divider {
+        height: 17px;
+        width: 1px;
+        margin: 0 9px;
+        background: #344137;
+    }
+    .main-content {
+        max-width: 1260px;
+        padding: 0 36px;
+        margin: 0 auto;
+    }
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-top: 34px;
+        color: #728077;
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.11em;
+    }
+    .breadcrumb .slash {
+        color: #3a483e;
+    }
+    .breadcrumb .current {
+        color: #c4d2bd;
+    }
+    .page-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin: 58px 0 34px;
+    }
+    .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        color: #aac098;
+        font:
+            11px "DM Mono",
+            monospace;
+        letter-spacing: 0.16em;
+    }
+    .eyebrow-line {
+        width: 23px;
+        height: 1px;
+        background: #a8c291;
+    }
+    .heading-index {
+        color: #607165;
+        letter-spacing: 0.04em;
+    }
+    h1,
+    h2,
+    p {
+        margin: 0;
+    }
+    h1 {
+        margin: 12px 0 8px;
+        font:
+            700 clamp(48px, 5.3vw, 76px)/0.98 "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.035em;
+        color: #f0f2ea;
+    }
+    h1 span {
+        color: #a6bd95;
+    }
+    .page-heading p {
+        color: #85948a;
+        font-size: 14px;
+    }
+    .classification-stamp {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid #855349;
+        padding: 7px 10px;
+        color: #db8170;
+        font:
+            9px/1.4 "DM Mono",
+            monospace;
+        letter-spacing: 0.12em;
+        white-space: nowrap;
+        background: rgba(113, 48, 43, 0.08);
+    }
+    .classification-stamp strong {
+        font-size: 10px;
+        font-weight: 500;
+    }
+    .stamp-icon {
+        font-size: 22px;
+        line-height: 1;
+    }
+    .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.8fr) minmax(300px, 0.93fr);
+        gap: 20px;
+        align-items: start;
+    }
+    .panel {
+        background: #141d18;
+        border: 1px solid #35463a;
+        box-shadow: 0 18px 55px #0003;
+    }
+    .dossier {
+        overflow: hidden;
+    }
+    .hazard-stripe {
+        height: 6px;
+        background: repeating-linear-gradient(
+            115deg,
+            #a9684a 0 17px,
+            #28362b 17px 30px
+        );
+        border-bottom: 1px solid #495840;
+    }
+    .panel-title-row {
+        min-height: 62px;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-bottom: 1px solid #334238;
+    }
+    .dossier .panel-title-row {
+        flex-wrap: wrap;
+        padding-block: 12px;
+    }
+    .section-label {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+    .square-dot {
+        width: 8px;
+        height: 8px;
+        background: #acc493;
+        flex: none;
+    }
+    .section-label h2 {
+        font:
+            600 13px "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.16em;
+        color: #d9e4d1;
+    }
+
+    .dossier-body {
+        display: grid;
+        grid-template-columns: 221px minmax(0, 1fr);
+        gap: 29px;
+        padding: 28px 27px 30px;
+    }
+    .portrait-frame {
+        position: relative;
+        height: 266px;
+        overflow: hidden;
+        background: #29362e;
+        border: 1px solid #60705d;
+    }
+    .portrait-art {
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: saturate(0.78);
+    }
+    .portrait-frame:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent 0 3px,
+            #0002 4px 5px
+        );
+        opacity: 0.45;
+    }
+    .portrait-topline,
+    .portrait-bottomline {
+        position: absolute;
+        z-index: 2;
+        left: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: space-between;
+        font:
+            8px "DM Mono",
+            monospace;
+        letter-spacing: 0.06em;
+        color: #d9d8c7;
+        text-shadow: 0 1px 3px #000;
+    }
+    .portrait-topline {
+        top: 11px;
+    }
+    .portrait-bottomline {
+        bottom: 10px;
+    }
+    .redacted-band {
+        position: absolute;
+        z-index: 2;
+        top: 45%;
+        left: -2px;
+        right: -2px;
+        padding: 9px 3px;
+        background: #141a19e8;
+        border-top: 1px solid #a16a59;
+        border-bottom: 1px solid #a16a59;
+        text-align: center;
+        color: #ead2c5;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.11em;
+        transform: rotate(-4deg);
+    }
+    .photo-caption {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 12px;
+        color: #697b6d;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.04em;
+    }
+    .photo-caption span {
+        color: #a46e55;
+    }
+    .identity-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .micro-label,
+    .field-label {
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.09em;
+        color: #829287;
+    }
+    .verified-tag {
+        border: 1px solid #4b654b;
+        color: #a9c59d;
+        font:
+            9px "DM Mono",
+            monospace;
+        padding: 6px 7px;
+        white-space: nowrap;
+    }
+    .verified-tag span {
+        margin-right: 4px;
+    }
+    .person-name {
+        font:
+            700 clamp(49px, 5vw, 69px)/1 "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.025em;
+        color: #f1f2eb;
+        margin-top: 16px;
+    }
+    .period {
+        color: #b7cd9b;
+    }
+    .name-subtitle {
+        color: #8ea294;
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.055em;
+        margin-top: 7px;
+    }
+    .name-subtitle span {
+        padding: 0 3px;
+    }
+    .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 16px;
+        margin-top: 27px;
+        border-top: 1px solid #344339;
+    }
+    .field {
+        min-height: 73px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 9px;
+        border-bottom: 1px solid #344339;
+    }
+    .field strong {
+        color: #dbe2d6;
+        font:
+            600 12px "DM Sans",
+            sans-serif;
+        letter-spacing: 0.02em;
+    }
+    .field strong.mono {
+        font:
+            500 12px "DM Mono",
+            monospace;
+        letter-spacing: 0;
+    }
+    .field-muted {
+        color: #7d8e80;
+        font-weight: 400;
+    }
+    .status-block {
+        margin-top: 21px;
+        background: #2d211e;
+        border: 1px solid #68443e;
+        border-left: 3px solid #ce7465;
+        padding: 12px 16px 13px;
+    }
+    .status-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .status-heading .field-label {
+        color: #bb8d81;
+    }
+    .status-pulse {
+        width: 6px;
+        height: 6px;
+        background: #d97d6c;
+        border-radius: 50%;
+        box-shadow: 0 0 9px #d97d6c;
+    }
+    .status-value {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 7px;
+        color: #f0a08d;
+        font:
+            600 19px "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.08em;
+    }
+    .status-cross {
+        font:
+            16px "DM Sans",
+            sans-serif;
+    }
+    .notes-block {
+        margin: 0 27px 26px;
+        padding: 17px 20px 18px;
+        background: #28221d;
+        border: 1px solid #6b5440;
+    }
+    .notes-heading {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #e5bd80;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.1em;
+    }
+    .warning-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #d6a76d;
+        border-radius: 50%;
+        font-weight: 500;
+    }
+    .notes-code {
+        margin-left: auto;
+        color: #a58262;
+        font-size: 9px;
+    }
+    .notes-block p {
+        margin: 13px 0 9px;
+        color: #f4dfbd;
+        font:
+            600 25px "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.02em;
+    }
+    .notes-detail {
+        color: #ad9073;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.08em;
+    }
+    .dossier-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 27px;
+        border-top: 1px solid #344339;
+        color: #76887b;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.08em;
+    }
+    .dossier-footer b {
+        color: #aabbaa;
+        font-weight: 500;
+    }
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .verification .panel-title-row {
+        padding: 0 23px;
+    }
+    .scan-icon {
+        color: #829d7c;
+        font-size: 22px;
+        line-height: 1;
+    }
+    .verify-intro {
+        padding: 19px 23px 0;
+        color: #9aab9b;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    .qr-link {
+        position: relative;
+        display: block;
+        width: min(236px, calc(100% - 56px));
+        aspect-ratio: 1;
+        margin: 24px auto 15px;
+        padding: 11px;
+        background: #f6f5e9;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+    .qr-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px #0006;
+    }
+    .qr-link:focus-visible,
+    .verify-button:focus-visible,
+    .brand:focus-visible {
+        outline: 2px solid #d6dca6;
+        outline-offset: 4px;
+    }
+    .qr-link img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        image-rendering: pixelated;
+    }
+    .qr-corner {
+        position: absolute;
+        width: 19px;
+        height: 19px;
+        border-color: #a2ba8d;
+        border-style: solid;
+        pointer-events: none;
+    }
+    .top-left {
+        top: -6px;
+        left: -6px;
+        border-width: 2px 0 0 2px;
+    }
+    .top-right {
+        top: -6px;
+        right: -6px;
+        border-width: 2px 2px 0 0;
+    }
+    .bottom-left {
+        bottom: -6px;
+        left: -6px;
+        border-width: 0 0 2px 2px;
+    }
+    .bottom-right {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 2px 2px 0;
+    }
+    .scan-caption {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 11px;
+        color: #a8c095;
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.17em;
+    }
+    .scan-line {
+        width: 25px;
+        height: 1px;
+        background: #526853;
+    }
+    .verify-small {
+        margin: 24px 0 12px;
+        color: #7e9080;
+        font-size: 11px;
+        text-align: center;
+    }
+    .verify-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 23px 23px;
+        padding: 15px 17px;
+        border: 1px solid #9db587;
+        color: #d9ead0;
+        background: #374d38;
+        text-decoration: none;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.085em;
+        transition: background 0.2s ease;
+    }
+    .verify-button:hover {
+        background: #49644b;
+    }
+    .verify-button span {
+        font:
+            18px "DM Sans",
+            sans-serif;
+        line-height: 0.5;
+    }
+    .verify-footer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 23px;
+        border-top: 1px solid #344339;
+        color: #859a81;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.04em;
+    }
+    .verify-footer .online-dot {
+        width: 5px;
+        height: 5px;
+    }
+    .verify-footer > span:last-child {
+        margin-left: auto;
+        color: #647765;
+    }
+    .access-panel {
+        display: flex;
+        gap: 15px;
+        padding: 20px 21px;
+        background: #1d211a;
+        border-color: #514d39;
+    }
+    .access-symbol {
+        color: #c7a970;
+        font-size: 26px;
+        line-height: 1;
+    }
+    .access-panel h2 {
+        color: #d6b77f;
+        font:
+            600 12px "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.15em;
+    }
+    .access-panel p {
+        margin-top: 7px;
+        color: #a29f87;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+    .sidebar-index {
+        display: flex;
+        justify-content: space-between;
+        color: #4f6355;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.08em;
+        padding: 2px 1px;
+    }
+    .telemetry-panel {
+        position: fixed;
+        z-index: 10;
+        right: 24px;
+        bottom: 24px;
+        width: min(440px, calc(100vw - 48px));
+        max-height: calc(100dvh - 48px);
+        overflow: auto;
+        padding: 21px 26px 23px;
+        border: 1px solid #65403e;
+        border-left: 3px solid #b74b48;
+        background: #090b0c;
+        box-shadow:
+            0 20px 60px #000b,
+            0 0 28px #a63f3b18;
+    }
+    .telemetry-panel[hidden],
+    .telemetry-reopen[hidden] {
+        display: none;
+    }
+    .telemetry-reopen {
+        position: fixed;
+        z-index: 10;
+        right: 24px;
+        bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 15px;
+        border: 1px solid #80504b;
+        background: #211514;
+        box-shadow: 0 12px 30px #0009;
+        color: #f0a09a;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.09em;
+        cursor: pointer;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease;
+    }
+    .telemetry-reopen:hover {
+        background: #38201e;
+        border-color: #d37c73;
+    }
+    .telemetry-reopen:focus-visible {
+        outline: 2px solid #f1b3ad;
+        outline-offset: 3px;
+    }
+    .reopen-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        color: #ed5757;
+        background: #ed5757;
+        box-shadow: 0 0 9px #ed5757;
+    }
+    .telemetry-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 17px;
+    }
+    .telemetry-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: none;
+    }
+    .telemetry-dismiss {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        border: 1px solid #564446;
+        background: transparent;
+        color: #b2a3a3;
+        font:
+            20px/1 "DM Sans",
+            sans-serif;
+        cursor: pointer;
+        transition:
+            border-color 0.2s ease,
+            color 0.2s ease;
+    }
+    .telemetry-dismiss:hover {
+        border-color: #e17974;
+        color: #f1b3ad;
+    }
+    .telemetry-dismiss:focus-visible {
+        outline: 2px solid #f1b3ad;
+        outline-offset: 3px;
+    }
+    .telemetry-heading h2 {
+        color: #91989b;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.04em;
+    }
+    .anomaly-badge {
+        border-radius: 20px;
+        padding: 4px 9px;
+        background: #371619;
+        color: #ed5757;
+        font:
+            500 11px "DM Mono",
+            monospace;
+        letter-spacing: 0.03em;
+    }
+    .telemetry-detection {
+        color: #d0d3d5;
+        font-size: 14px;
+    }
+    .telemetry-detail {
+        margin-top: 10px;
+        color: #999fa1;
+        font-size: 12px;
+    }
+    .telemetry-alert {
+        margin-top: 10px;
+        color: #f05a5c;
+        font:
+            500 12px "DM Mono",
+            monospace;
+        letter-spacing: 0.01em;
+    }
+    .site-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        border-top: 1px solid #27372d;
+        margin: 58px 0 0;
+        padding: 21px 0 35px;
+        color: #637468;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.06em;
+    }
+    .footer-divider {
+        padding: 0 5px;
+        color: #455749;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .site-header {
+            animation: reveal-down 0.55s ease-out both;
+        }
+        .breadcrumb {
+            animation: reveal-up 0.55s 0.1s ease-out both;
+        }
+        .page-heading {
+            animation: reveal-up 0.65s 0.18s ease-out both;
+        }
+        .telemetry-panel {
+            animation: reveal-up 0.65s 0.38s ease-out both;
+        }
+        .dossier {
+            animation: reveal-up 0.7s 0.58s ease-out both;
+        }
+        .verification {
+            animation: reveal-up 0.7s 0.72s ease-out both;
+        }
+        .access-panel,
+        .sidebar-index {
+            animation: reveal-up 0.6s 0.86s ease-out both;
+        }
+        .site-footer {
+            animation: reveal-up 0.6s 0.96s ease-out both;
+        }
+        .anomaly-badge {
+            animation: alert-glow 1.2s 1.1s ease-in-out 2;
+        }
+        .online-dot {
+            animation: beacon-pulse 2.2s ease-in-out infinite;
+        }
+        .reopen-dot {
+            animation: beacon-pulse 1.6s ease-in-out infinite;
+        }
+        .portrait-frame::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            inset: -45% 0 auto;
+            height: 40%;
+            background: linear-gradient(transparent, #c1d6b429, transparent);
+            pointer-events: none;
+            animation: portrait-scan 1.4s 1.1s ease-in-out both;
+        }
+    }
+    @keyframes reveal-up {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes reveal-down {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes alert-glow {
+        50% {
+            box-shadow: 0 0 16px #ed575766;
+        }
+    }
+    @keyframes beacon-pulse {
+        0%,
+        100% {
+            opacity: 0.8;
+            transform: scale(1);
+            box-shadow: 0 0 3px currentColor;
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.08);
+            box-shadow: 0 0 7px 1px currentColor;
+        }
+    }
+    @keyframes portrait-scan {
+        to {
+            transform: translateY(430%);
+        }
+    }
+    @media (max-width: 1050px) {
+        .content-grid {
+            grid-template-columns: minmax(0, 1fr) 310px;
+        }
+        .dossier-body {
+            grid-template-columns: 180px minmax(0, 1fr);
+            gap: 20px;
+            padding: 23px;
+        }
+        .portrait-frame {
+            height: 239px;
+        }
+        .notes-block {
+            margin-inline: 23px;
+        }
+        .field-grid {
+            gap: 0 8px;
+        }
+        .field strong,
+        .field strong.mono {
+            font-size: 10px;
+        }
+        .name-subtitle {
+            font-size: 9px;
+        }
+    }
+    @media (max-width: 800px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+        .sidebar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+        }
+        .sidebar-index {
+            display: none;
+        }
+        .page-heading {
+            margin-top: 42px;
+        }
+        .verification {
+            grid-row: span 2;
+        }
+        .qr-link {
+            width: min(236px, calc(100% - 56px));
+        }
+    }
+    @media (max-width: 600px) {
+        .header-inner {
+            min-height: 72px;
+            padding: 0 18px;
+        }
+        .brand-mark {
+            width: 35px;
+            height: 35px;
+        }
+        .brand-name {
+            font-size: 20px;
+        }
+        .brand-name small {
+            font-size: 6px;
+        }
+        .header-meta {
+            font-size: 10px;
+            gap: 8px;
+        }
+        .header-meta .online-dot {
+            width: 8px;
+            height: 8px;
+        }
+        .system-label,
+        .system-date,
+        .meta-divider {
+            display: none;
+        }
+        .main-content {
+            padding: 0 18px;
+        }
+        .breadcrumb {
+            padding-top: 24px;
+            font-size: 8px;
+            gap: 7px;
+        }
+        .page-heading {
+            display: block;
+            margin: 39px 0 25px;
+        }
+        .eyebrow {
+            font-size: 9px;
+            gap: 7px;
+        }
+        .eyebrow-line {
+            width: 15px;
+        }
+        h1 {
+            font-size: clamp(47px, 12vw, 66px);
+            line-height: 0.94;
+            margin-top: 15px;
+        }
+        .page-heading p {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .content-grid {
+            gap: 16px;
+        }
+        .dossier-body {
+            grid-template-columns: 1fr;
+            gap: 23px;
+            padding: 20px;
+        }
+        .portrait-column {
+            max-width: 260px;
+            width: 100%;
+            margin: auto;
+        }
+        .portrait-frame {
+            height: 275px;
+        }
+        .photo-caption {
+            justify-content: center;
+        }
+        .identity-top {
+            align-items: center;
+        }
+        .person-name {
+            font-size: 65px;
+        }
+        .field strong,
+        .field strong.mono {
+            font-size: 11px;
+        }
+        .notes-block {
+            margin: 0 20px 20px;
+            padding: 16px;
+        }
+        .notes-code {
+            font-size: 8px;
+        }
+        .notes-block p {
+            font-size: 23px;
+        }
+        .notes-detail {
+            font-size: 8px;
+            line-height: 1.5;
+            display: block;
+        }
+        .dossier-footer {
+            padding: 13px 20px;
+            font-size: 8px;
+        }
+        .sidebar {
+            display: flex;
+        }
+        .sidebar-index {
+            display: flex;
+        }
+        .telemetry-panel {
+            top: 84px;
+            right: 16px;
+            bottom: auto;
+            width: calc(100vw - 32px);
+            max-height: calc(100dvh - 100px);
+            padding: 19px 17px;
+            animation-name: reveal-down;
+        }
+        .telemetry-reopen {
+            right: 16px;
+            bottom: 16px;
+        }
+        .telemetry-heading h2 {
+            font-size: 9px;
+        }
+        .telemetry-detection {
+            font-size: 13px;
+        }
+        .telemetry-alert {
+            font-size: 10px;
+        }
+        .site-footer {
+            margin-top: 37px;
+            flex-direction: column;
+            gap: 9px;
+            line-height: 1.5;
+        }
+    }
+    @media (max-width: 380px) {
+        .field-grid {
+            grid-template-columns: 1fr;
+        }
+        .field {
+            min-height: 61px;
+        }
+
+        .verified-tag {
+            font-size: 8px;
+        }
+        .dossier-footer {
+            flex-direction: column;
+        }
+    }
+</style>

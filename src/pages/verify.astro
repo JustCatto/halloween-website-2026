@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0b100e" />
+        <meta name="robots" content="noindex" />
+        <script is:inline>
+            document.documentElement.classList.add("js");
+        </script>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>Verification Result | Catto Industries</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main class="reveal-page">
+            <div class="topline">
+                <span>
+                    CATTO INDUSTRIES{" "}
+                    <span class="muted">// SECURITY & CONTAINMENT</span>
+                </span>
+                <span>CI-07-1031-8842</span>
+            </div>
+            <section class="reveal-card" aria-labelledby="reveal-title">
+                <div class="card-top">
+                    <span class="status-light" aria-hidden="true"></span>{" "}
+                    <span id="scan-status">AUTHORIZATION REQUEST</span>
+                    <span class="card-index">// FILE 007</span>
+                </div>
+                <div class="verification-screen" aria-live="polite">
+                    <span class="gateway-label">
+                        CI SECURE GATEWAY // AUTHORIZATION REQUEST
+                    </span>
+                    <h2>
+                        VERIFYING
+                        <br />
+                        <span>IDENTITY.</span>
+                    </h2>
+                    <div class="verification-log">
+                        <p class="verification-step" id="step-hash">
+                            <span class="step-icon" aria-hidden="true">
+                                ◌
+                            </span>{" "}
+                            Submitting hash to server...
+                        </p>
+                        <p
+                            class="verification-step"
+                            id="step-credentials"
+                            hidden
+                        >
+                            <span class="step-icon" aria-hidden="true">
+                                ◌
+                            </span>{" "}
+                            Verifying credentials...
+                        </p>
+                        <p
+                            class="verification-step denied"
+                            id="step-denied"
+                            hidden
+                        >
+                            <span class="step-icon" aria-hidden="true">
+                                ✕
+                            </span>{" "}
+                            Access denied.
+                        </p>
+                    </div>
+                    <div class="verification-progress" aria-hidden="true">
+                        <span id="progress-fill"></span>
+                    </div>
+                    <p class="gateway-footer">
+                        PLEASE DO NOT CLOSE THIS WINDOW // CI-07-1031-8842
+                    </p>
+                </div>
+                <div class="reveal-content">
+                    <span class="eyebrow">
+                        ACCESS DENIED <span>—</span> PRANK PROTOCOL ACTIVATED
+                    </span>
+                    <h1 id="reveal-title">
+                        YOU'VE BEEN
+                        <br />
+                        <span>RICKROLLED.</span>
+                    </h1>
+                    <p class="subtitle">
+                        Never gonna give you up. Never gonna let you down.
+                    </p>
+                    <div class="media-frame">
+                        <div class="frame-label">
+                            <span>ARCHIVE FOOTAGE // SUBJECT R.A.</span>
+                            <span>● REC</span>
+                        </div>
+                        <img
+                            class="animated-gif"
+                            src="/rickroll.gif"
+                            alt="Rick Astley singing and dancing in the Never Gonna Give You Up music video"
+                            width="320"
+                            height="240"
+                        />
+                        <img
+                            class="still-frame"
+                            src="/rickroll-still.png"
+                            alt="Rick Astley at a microphone"
+                            width="320"
+                            height="240"
+                        />
+                        <div class="frame-bottom">
+                            <span>FEED 07</span>
+                            <span>DECLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="audio-section">
+                        <div class="audio-heading">
+                            <span class="audio-bars" aria-hidden="true">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </span>
+                            <span>AUDIO TRANSMISSION</span>
+                        </div>
+                        <audio
+                            id="rickroll-audio"
+                            src="/rickroll.mp3"
+                            loop
+                            controls
+                            preload="auto"
+                        >
+                            Your browser does not support audio playback.
+                        </audio>
+                        <p
+                            id="audio-status"
+                            class="audio-status"
+                            aria-live="polite"
+                        >
+                            Attempting to play audio…
+                        </p>
+                        <button
+                            id="play-audio"
+                            class="play-button"
+                            type="button"
+                            hidden
+                        >
+                            ▶ TAP TO PLAY AUDIO
+                        </button>
+                    </div>
+                    <a class="return-link" href="/">
+                        ← RETURN TO PERSONNEL FILE
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <span>CATTO INDUSTRIES // HALLOWEEN 2026</span>
+                    <span>YOU KNOW THE RULES.</span>
+                </div>
+            </section>
+            <p class="disclaimer">
+                A FICTIONAL HALLOWEEN SURPRISE · NOT A REAL GOVERNMENT SERVICE
+            </p>
+        </main>
+        <script>
+            const audio =
+                document.querySelector<HTMLAudioElement>("#rickroll-audio");
+            const status = document.getElementById("audio-status");
+            const playButton = document.getElementById("play-audio");
+
+            const card = document.querySelector(".reveal-card");
+            const hashStep = document.getElementById("step-hash");
+            const credentialsStep = document.getElementById("step-credentials");
+            const deniedStep = document.getElementById("step-denied");
+            const progress = document.getElementById("progress-fill");
+            const scanStatus = document.getElementById("scan-status");
+            const wait = (ms: number) =>
+                new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+            if (
+                audio &&
+                status &&
+                playButton &&
+                card &&
+                hashStep &&
+                credentialsStep &&
+                deniedStep &&
+                progress
+            ) {
+                playButton.addEventListener("click", () => {
+                    audio
+                        .play()
+                        .then(() => {
+                            status.textContent = "Audio transmission active.";
+                            playButton.hidden = true;
+                        })
+                        .catch(() => {
+                            status.textContent =
+                                "Playback unavailable. Try the audio controls above.";
+                        });
+                });
+
+                const runVerification = async () => {
+                    await wait(1100);
+                    hashStep.classList.add("completed");
+                    hashStep.querySelector(".step-icon")!.textContent = "✓";
+                    credentialsStep.hidden = false;
+                    progress.style.width = "65%";
+
+                    await wait(1350);
+                    credentialsStep.classList.add("completed");
+                    credentialsStep.querySelector(".step-icon")!.textContent =
+                        "✓";
+                    deniedStep.hidden = false;
+                    progress.style.width = "100%";
+
+                    await wait(1100);
+                    card.classList.add("is-revealed");
+                    if (scanStatus)
+                        scanStatus.textContent = "CREDENTIAL SCAN COMPLETE";
+                    audio
+                        .play()
+                        .then(() => {
+                            status.textContent = "Audio transmission active.";
+                        })
+                        .catch(() => {
+                            status.textContent =
+                                "Autoplay was blocked by your browser. Tap below to hear it.";
+                            playButton.hidden = false;
+                        });
+                };
+                runVerification();
+            }
+        </script>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+    :global(html) {
+        background: #0b100e;
+    }
+    :global(body) {
+        margin: 0;
+        color: #e8e9df;
+        font-family: "DM Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    :global(::selection) {
+        background: #b84944;
+        color: white;
+    }
+    .reveal-page {
+        min-height: 100vh;
+        padding: 30px 24px 48px;
+        background:
+            radial-gradient(
+                ellipse 55% 40% at 50% 38%,
+                #472020 0%,
+                transparent 100%
+            ),
+            linear-gradient(#a2837410 1px, transparent 1px),
+            linear-gradient(90deg, #a2837410 1px, transparent 1px), #0b100e;
+        background-size:
+            auto,
+            52px 52px,
+            52px 52px,
+            auto;
+    }
+    .topline {
+        max-width: 860px;
+        margin: 0 auto 36px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        color: #acc19e;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.1em;
+    }
+    .topline .muted {
+        color: #728276;
+    }
+    .reveal-card {
+        max-width: 860px;
+        margin: 0 auto;
+        border: 1px solid #70463e;
+        background: #151b18;
+        box-shadow: 0 30px 85px #0009;
+    }
+    .card-top,
+    .card-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 17px 26px;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.1em;
+    }
+    .card-top {
+        color: #d9ad99;
+        border-bottom: 1px solid #523c35;
+        background: #271c1a;
+    }
+    .status-light {
+        width: 7px;
+        height: 7px;
+        background: #ee705e;
+        border-radius: 50%;
+        box-shadow: 0 0 9px #ee705e;
+    }
+    .card-index {
+        margin-left: auto;
+        color: #986a60;
+    }
+    .verification-screen {
+        display: none;
+        min-height: 490px;
+        padding: 72px max(26px, calc((100% - 560px) / 2)) 55px;
+    }
+    :global(.js) .verification-screen {
+        display: block;
+    }
+    :global(.js) .reveal-content,
+    :global(.js) .is-revealed .verification-screen {
+        display: none;
+    }
+    :global(.js) .is-revealed .reveal-content {
+        display: block;
+    }
+    .gateway-label {
+        color: #a9c398;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.11em;
+    }
+    .verification-screen h2 {
+        margin: 18px 0 30px;
+        color: #f0f1e9;
+        font:
+            700 clamp(55px, 8vw, 77px)/0.95 "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.035em;
+    }
+    .verification-screen h2 span {
+        color: #abc29a;
+    }
+    .verification-log {
+        min-height: 119px;
+        border-top: 1px solid #37463a;
+        padding-top: 11px;
+    }
+    .verification-step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+        padding: 7px 0;
+        color: #d0d8cc;
+        font:
+            12px "DM Mono",
+            monospace;
+    }
+    .verification-step[hidden] {
+        display: none;
+    }
+    .step-icon {
+        width: 16px;
+        flex: none;
+        color: #a5bd95;
+        font-size: 16px;
+        line-height: 1;
+    }
+    .verification-step.completed {
+        color: #8ca28a;
+    }
+    .verification-step.denied,
+    .verification-step.denied .step-icon {
+        color: #f08372;
+    }
+    .verification-progress {
+        height: 3px;
+        background: #344037;
+    }
+    .verification-progress span {
+        display: block;
+        width: 30%;
+        height: 100%;
+        background: #aac497;
+    }
+    .gateway-footer {
+        margin: 12px 0 0;
+        color: #6e806f;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.08em;
+    }
+    .reveal-content {
+        text-align: center;
+        padding: 43px 26px 34px;
+    }
+    .eyebrow {
+        color: #e18571;
+        font:
+            500 11px "DM Mono",
+            monospace;
+        letter-spacing: 0.16em;
+    }
+    .eyebrow span {
+        padding: 0 5px;
+        color: #806257;
+    }
+    h1 {
+        margin: 13px 0 7px;
+        color: #f4f0e7;
+        font:
+            800 clamp(58px, 9vw, 96px)/0.92 "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.035em;
+    }
+    h1 span {
+        color: #e1826b;
+    }
+    .subtitle {
+        margin: 0 0 28px;
+        color: #a6b2a4;
+        font-size: 14px;
+    }
+    .media-frame {
+        max-width: 470px;
+        margin: 0 auto;
+        border: 1px solid #74584a;
+        background: #0a0d0c;
+        box-shadow:
+            0 0 0 6px #25231d,
+            0 18px 45px #0007;
+    }
+    .frame-label,
+    .frame-bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        color: #ae9982;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.1em;
+    }
+    .frame-label span:last-child {
+        color: #e97767;
+    }
+    .frame-bottom {
+        border-top: 1px solid #443d34;
+        color: #817f70;
+    }
+    .media-frame img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+    }
+    .media-frame .still-frame {
+        display: none;
+    }
+    .audio-section {
+        max-width: 470px;
+        margin: 31px auto 0;
+        text-align: left;
+    }
+    .audio-heading {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        color: #b7c8aa;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.11em;
+    }
+    .audio-bars {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        height: 13px;
+    }
+    .audio-bars i {
+        width: 2px;
+        height: 6px;
+        background: #a9c994;
+    }
+    .audio-bars i:nth-child(2),
+    .audio-bars i:nth-child(4) {
+        height: 12px;
+    }
+    .audio-bars i:nth-child(3) {
+        height: 9px;
+    }
+    audio {
+        width: 100%;
+        display: block;
+        accent-color: #b76354;
+    }
+    .audio-status {
+        margin: 10px 0 0;
+        color: #9aa99a;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+    .play-button {
+        margin-top: 12px;
+        padding: 12px 17px;
+        border: 1px solid #bc6e5a;
+        background: #6b342d;
+        color: #fff2e9;
+        font:
+            500 11px "DM Mono",
+            monospace;
+        letter-spacing: 0.07em;
+        cursor: pointer;
+    }
+    .play-button:hover {
+        background: #87433a;
+    }
+    .play-button[hidden] {
+        display: none;
+    }
+    .play-button:focus-visible,
+    .return-link:focus-visible {
+        outline: 2px solid #e5bd80;
+        outline-offset: 4px;
+    }
+    .return-link {
+        display: inline-block;
+        margin-top: 34px;
+        color: #b0c3a4;
+        text-decoration: none;
+        border-bottom: 1px solid #667c62;
+        padding-bottom: 4px;
+        font:
+            500 10px "DM Mono",
+            monospace;
+        letter-spacing: 0.09em;
+    }
+    .return-link:hover {
+        color: #e4eedd;
+    }
+    .card-footer {
+        justify-content: space-between;
+        border-top: 1px solid #344138;
+        color: #778978;
+        font-size: 9px;
+    }
+    .disclaimer {
+        margin: 23px auto 0;
+        text-align: center;
+        color: #6e7d70;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.08em;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .verification-progress span {
+            transition: width 0.4s ease-out;
+        }
+        :global(.js) .is-revealed .reveal-content {
+            animation: reveal-in 0.5s ease-out both;
+        }
+    }
+    @keyframes reveal-in {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @media (max-width: 600px) {
+        .reveal-page {
+            padding: 20px 16px 32px;
+        }
+        .topline {
+            margin-bottom: 20px;
+            font-size: 8px;
+        }
+        .topline .muted {
+            display: none;
+        }
+        .card-top,
+        .card-footer {
+            padding: 14px 15px;
+            font-size: 8px;
+        }
+        .reveal-content {
+            padding: 34px 19px 29px;
+        }
+        .eyebrow {
+            font-size: 9px;
+            letter-spacing: 0.06em;
+        }
+        h1 {
+            font-size: clamp(54px, 14vw, 76px);
+        }
+        .subtitle {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .frame-label,
+        .frame-bottom {
+            font-size: 8px;
+        }
+        .card-footer {
+            gap: 15px;
+        }
+    }
+    @media (max-width: 600px) {
+        .verification-screen {
+            min-height: 420px;
+            padding: 65px 22px 45px;
+        }
+        .verification-screen h2 {
+            font-size: clamp(52px, 13vw, 72px);
+        }
+        .verification-step {
+            font-size: 10px;
+        }
+        .gateway-label,
+        .gateway-footer {
+            font-size: 8px;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .media-frame .animated-gif {
+            display: none;
+        }
+        .media-frame .still-frame {
+            display: block;
+        }
+    }
+</style>
