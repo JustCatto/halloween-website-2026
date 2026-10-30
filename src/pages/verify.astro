@@ -119,7 +119,8 @@
                                 KEEP YOUR HANDS VISIBLE. DO NOT CLOSE THIS
                                 WINDOW.
                                 <br />
-                                AWAIT FURTHER INSTRUCTIONS.
+                                AWAIT FURTHER INSTRUCTIONS. OR DONT. THIS IS A
+                                JOKE.
                             </span>
                         </p>
                     </div>
@@ -186,6 +187,33 @@
                             ▶ TAP TO PLAY AUDIO
                         </button>
                     </div>
+                    <section class="audit-panel" aria-labelledby="audit-title">
+                        <div class="audit-heading">
+                            <h2 id="audit-title">SESSION AUDIT TRAIL</h2>
+                            <span>INCIDENT REF // 07</span>
+                        </div>
+                        <dl class="audit-metadata">
+                            <div>
+                                <dt>SESSION ID</dt>
+                                <dd id="audit-session-id">PENDING</dd>
+                            </div>
+                            <div>
+                                <dt>DATE OF ACCESS</dt>
+                                <dd>
+                                    <time id="audit-accessed">--</time>
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>CREDENTIAL ACCESSED</dt>
+                                <dd>CI-07-1031-8842</dd>
+                            </div>
+                        </dl>
+                        <div class="audit-log-label">
+                            <span>RECENT EVENTS</span>
+                            <span>SESSION TRACE</span>
+                        </div>
+                        <ol id="audit-events" class="audit-events"></ol>
+                    </section>
                     <a class="return-link" href="/">
                         ← RETURN TO PERSONNEL FILE
                     </a>
@@ -196,7 +224,8 @@
                 </div>
             </section>
             <p class="disclaimer">
-                A FICTIONAL HALLOWEEN SURPRISE · NOT A REAL GOVERNMENT SERVICE
+                A FICTIONAL HALLOWEEN SURPRISE · NOT A REAL GOVERNMENT SERVICE ·
+                NO DATA IS COLLECTED OR STORED
             </p>
         </main>
         <script>
@@ -212,6 +241,25 @@
             const hashButton = document.getElementById("view-hash");
             const progress = document.getElementById("progress-fill");
             const scanStatus = document.getElementById("scan-status");
+            const auditSessionId = document.getElementById("audit-session-id");
+            const auditAccessed = document.getElementById("audit-accessed");
+            const auditEvents = document.getElementById("audit-events");
+            const timestampFormat = new Intl.DateTimeFormat("en-GB", {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false,
+                timeZoneName: "short",
+            });
+            const eventTimeFormat = new Intl.DateTimeFormat("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false,
+            });
             const wait = (ms: number) =>
                 new Promise<void>((resolve) => setTimeout(resolve, ms));
 
@@ -225,8 +273,44 @@
                 grantedStep &&
                 hashButton &&
                 scanStatus &&
-                progress
+                progress &&
+                auditSessionId &&
+                auditAccessed &&
+                auditEvents
             ) {
+                const accessedAt = new Date();
+                const randomPart =
+                    globalThis.crypto?.randomUUID?.() ??
+                    Math.random().toString(16).slice(2);
+                auditSessionId.textContent = `CI-S-${randomPart.slice(0, 8).toUpperCase()}`;
+                auditAccessed.textContent = timestampFormat.format(accessedAt);
+                auditAccessed.setAttribute(
+                    "datetime",
+                    accessedAt.toISOString(),
+                );
+
+                const recordEvent = (label: string) => {
+                    const occurredAt = new Date();
+                    const entry = document.createElement("li");
+                    const time = document.createElement("time");
+                    const description = document.createElement("span");
+                    time.dateTime = occurredAt.toISOString();
+                    time.textContent = eventTimeFormat.format(occurredAt);
+                    description.textContent = label;
+                    entry.append(time, description);
+                    auditEvents.append(entry);
+                };
+                recordEvent("SESSION OPENED");
+
+                audio.addEventListener("play", () => {
+                    card.classList.add("is-playing");
+                    status.textContent = "Audio transmission active.";
+                    playButton.hidden = true;
+                });
+                audio.addEventListener("pause", () =>
+                    card.classList.remove("is-playing"),
+                );
+
                 playButton.addEventListener("click", () => {
                     audio
                         .play()
@@ -245,6 +329,7 @@
                     const playback = audio.play();
                     card.classList.add("is-revealed");
                     scanStatus.textContent = "UNAUTHORISED ACCESS";
+                    recordEvent("VERIFICATION HASH OPENED // SESSION FLAGGED");
                     document.getElementById("reveal-title")?.focus();
                     playback
                         .then(() => {
@@ -261,6 +346,7 @@
                     await wait(1100);
                     hashStep.classList.add("completed");
                     hashStep.querySelector(".step-icon")!.textContent = "✓";
+                    recordEvent("HASH CHECK COMPLETE");
                     credentialsStep.hidden = false;
                     progress.style.width = "65%";
 
@@ -268,12 +354,14 @@
                     credentialsStep.classList.add("completed");
                     credentialsStep.querySelector(".step-icon")!.textContent =
                         "✓";
+                    recordEvent("CREDENTIAL CHECK COMPLETE");
                     grantedStep.hidden = false;
                     progress.style.width = "100%";
 
                     await wait(1100);
                     card.classList.add("is-authorized");
                     scanStatus.textContent = "ACCESS GRANTED";
+                    recordEvent("ACCESS GRANTED");
                     hashButton.focus();
                 };
                 runVerification();
@@ -357,6 +445,8 @@
     .status-light {
         width: 7px;
         height: 7px;
+        flex: none;
+        color: #ee705e;
         background: #ee705e;
         border-radius: 50%;
         box-shadow: 0 0 9px #ee705e;
@@ -371,6 +461,7 @@
         background: #202b20;
     }
     .is-authorized .status-light {
+        color: #a7d68c;
         background: #a7d68c;
         box-shadow: 0 0 9px #a7d68c;
     }
@@ -380,6 +471,7 @@
         background: #351d1c;
     }
     .is-revealed .status-light {
+        color: #ee705e;
         background: #ee705e;
         box-shadow: 0 0 9px #ee705e;
     }
@@ -623,6 +715,7 @@
         font-size: 14px;
     }
     .media-frame {
+        position: relative;
         max-width: 470px;
         margin: 0 auto;
         border: 1px solid #74584a;
@@ -659,6 +752,18 @@
     }
     .media-frame .still-frame {
         display: none;
+    }
+    .media-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            to bottom,
+            transparent 0 3px,
+            #0b100e40 4px 5px
+        );
+        opacity: 0.35;
     }
     .audio-section {
         max-width: 470px;
@@ -728,6 +833,93 @@
         outline: 2px solid #e5bd80;
         outline-offset: 4px;
     }
+    .audit-panel {
+        max-width: 470px;
+        margin: 31px auto 0;
+        border: 1px solid #455746;
+        background: #101814;
+        text-align: left;
+    }
+    .audit-heading,
+    .audit-log-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 13px 16px;
+        border-bottom: 1px solid #344438;
+        color: #8ba385;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.07em;
+    }
+    .audit-heading h2 {
+        margin: 0;
+        color: #d2e2c7;
+        font:
+            500 11px "DM Mono",
+            monospace;
+        letter-spacing: 0.09em;
+    }
+    .audit-metadata {
+        margin: 0;
+        padding: 4px 16px;
+    }
+    .audit-metadata > div {
+        display: grid;
+        grid-template-columns: 138px minmax(0, 1fr);
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #29392e;
+    }
+    .audit-metadata > div:last-child {
+        border-bottom: 0;
+    }
+    .audit-metadata dt,
+    .audit-metadata dd,
+    .audit-events {
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.02em;
+    }
+    .audit-metadata dt {
+        color: #809780;
+    }
+    .audit-metadata dd {
+        margin: 0;
+        color: #d6dfd0;
+        overflow-wrap: anywhere;
+    }
+    .audit-log-label {
+        border-top: 1px solid #344438;
+        color: #b3c9a8;
+    }
+    .audit-log-label span:last-child {
+        color: #738875;
+    }
+    .audit-events {
+        list-style: none;
+        margin: 0;
+        padding: 4px 16px 14px;
+        color: #a6b8a4;
+    }
+    .audit-events :global(li) {
+        display: grid;
+        grid-template-columns: 68px minmax(0, 1fr);
+        gap: 10px;
+        padding: 7px 0;
+        border-bottom: 1px solid #29392e;
+        line-height: 1.4;
+    }
+    .audit-events :global(li:last-child) {
+        border-bottom: 0;
+        color: #efa592;
+    }
+    .audit-events :global(time) {
+        color: #839e7b;
+    }
+
     .return-link {
         display: inline-block;
         margin-top: 34px;
@@ -750,21 +942,106 @@
         font-size: 9px;
     }
     .disclaimer {
+        max-width: 860px;
         margin: 23px auto 0;
         text-align: center;
-        color: #6e7d70;
+        color: #829081;
         font:
             9px "DM Mono",
             monospace;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.06em;
     }
+
     @media (prefers-reduced-motion: no-preference) {
+        .status-light {
+            animation: beacon-pulse 2.2s ease-in-out infinite;
+        }
+        .verification-step:not([hidden]) {
+            animation: console-print 0.4s steps(22, end) both;
+        }
+        .verification-step:not(.completed):not(.granted) .step-icon {
+            animation: cursor-blink 0.9s steps(1, end) infinite;
+        }
         .verification-progress span {
             transition: width 0.4s ease-out;
         }
         :global(.js) .is-authorized .hash-gate,
         :global(.js) .is-revealed .reveal-content {
             animation: reveal-in 0.5s ease-out both;
+        }
+        :global(.js) .is-revealed h1 {
+            animation: signal-glitch 0.65s ease-out both;
+        }
+        .is-playing .audio-bars i {
+            animation: equalize 0.65s ease-in-out infinite alternate;
+        }
+        .is-playing .audio-bars i:nth-child(2),
+        .is-playing .audio-bars i:nth-child(4) {
+            animation-delay: -0.35s;
+        }
+        .is-playing .audio-bars i:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+    }
+    @keyframes beacon-pulse {
+        0%,
+        100% {
+            opacity: 0.8;
+            transform: scale(1);
+            box-shadow: 0 0 3px currentColor;
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.08);
+            box-shadow: 0 0 7px 1px currentColor;
+        }
+    }
+    @keyframes console-print {
+        from {
+            clip-path: inset(0 100% 0 0);
+        }
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+    @keyframes cursor-blink {
+        50% {
+            opacity: 0.35;
+        }
+    }
+    @keyframes signal-glitch {
+        0%,
+        100% {
+            text-shadow: none;
+            transform: translateX(0);
+        }
+        14% {
+            text-shadow:
+                -3px 0 #e1826b,
+                3px 0 #abc29a;
+            transform: translateX(-2px);
+        }
+        18% {
+            text-shadow: none;
+            transform: translateX(0);
+        }
+        42% {
+            text-shadow:
+                2px 0 #e1826b,
+                -2px 0 #abc29a;
+            transform: translateX(1px);
+        }
+        46% {
+            text-shadow: none;
+            transform: translateX(0);
+        }
+    }
+    @keyframes equalize {
+        from {
+            transform: scaleY(0.45);
+        }
+        to {
+            transform: scaleY(1.15);
         }
     }
     @keyframes reveal-in {
@@ -843,6 +1120,19 @@
         }
         .trap-warning strong {
             font-size: 12px;
+        }
+        .audit-heading,
+        .audit-log-label {
+            font-size: 8px;
+        }
+        .audit-metadata > div {
+            grid-template-columns: 1fr;
+            gap: 4px;
+        }
+        .audit-metadata dt,
+        .audit-metadata dd,
+        .audit-events {
+            font-size: 9px;
         }
         .verification-step {
             font-size: 10px;

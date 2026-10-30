@@ -2,7 +2,7 @@
 
 This website was 100% vibecoded. It is a fictional Halloween prop: a classified-looking Catto Industries personnel file that turns a credential check into a Rickroll.
 
-The story follows Rick A., a Level 7 personnel record marked **Presumed Deceased** with a warning that the subject may be infected. A floating security monitor reports an impossible sighting. Visitors can dismiss and reopen the alert, inspect the dossier, and scan the QR code or click the verification button. The `/verify` page stages a fake hash submission and credential check, then grants access to a “View Verification Hash” button. Opening it flags the session as unauthorised access, dispatches fictional security personnel, and reveals the GIF and audio.
+The story follows Rick A., a Level 7 personnel record marked **Presumed Deceased** with a warning that the subject may be infected. A floating security monitor reports an impossible sighting. Visitors can dismiss and reopen the alert, inspect the dossier, and scan the QR code or click the verification button. The `/verify` page stages a fake hash submission and credential check, then grants access to a “View Verification Hash” button. Opening it flags the session as unauthorised access, dispatches fictional security personnel, and reveals the GIF, audio, and a simulated session audit trail.
 
 **This is not a real ID, government service, security system, or verification process.** No hash is submitted and no credentials are checked.
 
@@ -13,7 +13,7 @@ The story follows Rick A., a Level 7 personnel record marked **Presumed Deceased
 - Locally hosted GIF and MP3 assets for the reveal page.
 - A Cloudflare Workers static-assets configuration in `wrangler.jsonc`.
 
-The homepage clock uses the visitor's local time. “Last Seen” is simulated as 2–6 minutes before the current time, with a random offset chosen on each page load. The status alert and verification sequence are also just theatrical UI.
+The homepage clock uses the visitor's local time. “Last Seen” is simulated as 2–6 minutes before the current time, with a random offset chosen on each page load. The status alert and verification sequence are also just theatrical UI. The reveal page generates a temporary session ID and timestamps events using the visitor's device clock. These entries are not sent to a server, retained, authenticated, or suitable as legal evidence.
 
 ## Run locally
 
