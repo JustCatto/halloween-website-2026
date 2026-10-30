@@ -29,7 +29,7 @@
             <section class="reveal-card" aria-labelledby="reveal-title">
                 <div class="card-top">
                     <span class="status-light" aria-hidden="true"></span>{" "}
-                    <span id="scan-status">AUTHORIZATION REQUEST</span>
+                    <span id="scan-status">CI SECURE GATEWAY</span>
                     <span class="card-index">// FILE 007</span>
                 </div>
                 <div class="verification-screen" aria-live="polite">
@@ -59,14 +59,14 @@
                             Verifying credentials...
                         </p>
                         <p
-                            class="verification-step denied"
-                            id="step-denied"
+                            class="verification-step granted"
+                            id="step-granted"
                             hidden
                         >
                             <span class="step-icon" aria-hidden="true">
-                                ✕
+                                ✓
                             </span>{" "}
-                            Access denied.
+                            Access granted.
                         </p>
                     </div>
                     <div class="verification-progress" aria-hidden="true">
@@ -76,17 +76,55 @@
                         PLEASE DO NOT CLOSE THIS WINDOW // CI-07-1031-8842
                     </p>
                 </div>
+                <div class="hash-gate" aria-labelledby="gate-title">
+                    <span class="gateway-label">
+                        CI SECURE GATEWAY // IDENTITY CONFIRMED
+                    </span>
+                    <h2 id="gate-title">
+                        ACCESS
+                        <br />
+                        <span>GRANTED.</span>
+                    </h2>
+                    <p>
+                        Credential verified. Your encrypted verification hash is
+                        ready to view.
+                    </p>
+                    <div class="hash-preview">
+                        <span>VERIFICATION HASH</span>
+                        <span>•••• •••• •••• 8842</span>
+                    </div>
+                    <button id="view-hash" class="hash-button" type="button">
+                        VIEW VERIFICATION HASH <span aria-hidden="true">↗</span>
+                    </button>
+                    <small>CI-07-1031-8842 // LEVEL 7 CLEARANCE</small>
+                </div>
                 <div class="reveal-content">
                     <span class="eyebrow">
-                        ACCESS DENIED <span>—</span> PRANK PROTOCOL ACTIVATED
+                        UNAUTHORISED ACCESS <span>—</span> SESSION FLAGGED
                     </span>
-                    <h1 id="reveal-title">
-                        YOU'VE BEEN
+                    <h1 id="reveal-title" tabindex="-1">
+                        LOCATION
                         <br />
-                        <span>RICKROLLED.</span>
+                        <span>LOGGED.</span>
                     </h1>
+                    <div class="trap-warning">
+                        <span class="trap-icon" aria-hidden="true">
+                            !
+                        </span>
+                        <p>
+                            SECURITY PERSONNEL ARE ON THE WAY.
+                            <br />
+                            <strong>DO NOT MOVE.</strong>
+                            <span class="trap-instructions">
+                                KEEP YOUR HANDS VISIBLE. DO NOT CLOSE THIS
+                                WINDOW.
+                                <br />
+                                AWAIT FURTHER INSTRUCTIONS.
+                            </span>
+                        </p>
+                    </div>
                     <p class="subtitle">
-                        Never gonna give you up. Never gonna let you down.
+                        This session has been logged. Never gonna give you up.
                     </p>
                     <div class="media-frame">
                         <div class="frame-label">
@@ -170,7 +208,8 @@
             const card = document.querySelector(".reveal-card");
             const hashStep = document.getElementById("step-hash");
             const credentialsStep = document.getElementById("step-credentials");
-            const deniedStep = document.getElementById("step-denied");
+            const grantedStep = document.getElementById("step-granted");
+            const hashButton = document.getElementById("view-hash");
             const progress = document.getElementById("progress-fill");
             const scanStatus = document.getElementById("scan-status");
             const wait = (ms: number) =>
@@ -183,7 +222,9 @@
                 card &&
                 hashStep &&
                 credentialsStep &&
-                deniedStep &&
+                grantedStep &&
+                hashButton &&
+                scanStatus &&
                 progress
             ) {
                 playButton.addEventListener("click", () => {
@@ -199,6 +240,23 @@
                         });
                 });
 
+                hashButton.addEventListener("click", () => {
+                    // Play directly in the click handler to preserve the browser's user gesture.
+                    const playback = audio.play();
+                    card.classList.add("is-revealed");
+                    scanStatus.textContent = "UNAUTHORISED ACCESS";
+                    document.getElementById("reveal-title")?.focus();
+                    playback
+                        .then(() => {
+                            status.textContent = "Audio transmission active.";
+                        })
+                        .catch(() => {
+                            status.textContent =
+                                "Playback was blocked. Tap below to hear it.";
+                            playButton.hidden = false;
+                        });
+                });
+
                 const runVerification = async () => {
                     await wait(1100);
                     hashStep.classList.add("completed");
@@ -210,23 +268,13 @@
                     credentialsStep.classList.add("completed");
                     credentialsStep.querySelector(".step-icon")!.textContent =
                         "✓";
-                    deniedStep.hidden = false;
+                    grantedStep.hidden = false;
                     progress.style.width = "100%";
 
                     await wait(1100);
-                    card.classList.add("is-revealed");
-                    if (scanStatus)
-                        scanStatus.textContent = "CREDENTIAL SCAN COMPLETE";
-                    audio
-                        .play()
-                        .then(() => {
-                            status.textContent = "Audio transmission active.";
-                        })
-                        .catch(() => {
-                            status.textContent =
-                                "Autoplay was blocked by your browser. Tap below to hear it.";
-                            playButton.hidden = false;
-                        });
+                    card.classList.add("is-authorized");
+                    scanStatus.textContent = "ACCESS GRANTED";
+                    hashButton.focus();
                 };
                 runVerification();
             }
@@ -317,6 +365,24 @@
         margin-left: auto;
         color: #986a60;
     }
+    .is-authorized .card-top {
+        color: #c8dfb6;
+        border-bottom-color: #4f6848;
+        background: #202b20;
+    }
+    .is-authorized .status-light {
+        background: #a7d68c;
+        box-shadow: 0 0 9px #a7d68c;
+    }
+    .is-revealed .card-top {
+        color: #f0a197;
+        border-bottom-color: #80433f;
+        background: #351d1c;
+    }
+    .is-revealed .status-light {
+        background: #ee705e;
+        box-shadow: 0 0 9px #ee705e;
+    }
     .verification-screen {
         display: none;
         min-height: 490px;
@@ -325,8 +391,15 @@
     :global(.js) .verification-screen {
         display: block;
     }
+    .hash-gate,
     :global(.js) .reveal-content,
-    :global(.js) .is-revealed .verification-screen {
+    :global(.js) .is-authorized .verification-screen {
+        display: none;
+    }
+    :global(.js) .is-authorized .hash-gate {
+        display: block;
+    }
+    :global(.js) .is-revealed .hash-gate {
         display: none;
     }
     :global(.js) .is-revealed .reveal-content {
@@ -379,9 +452,9 @@
     .verification-step.completed {
         color: #8ca28a;
     }
-    .verification-step.denied,
-    .verification-step.denied .step-icon {
-        color: #f08372;
+    .verification-step.granted,
+    .verification-step.granted .step-icon {
+        color: #b7d99d;
     }
     .verification-progress {
         height: 3px;
@@ -400,6 +473,79 @@
             9px "DM Mono",
             monospace;
         letter-spacing: 0.08em;
+    }
+    .hash-gate {
+        min-height: 490px;
+        padding: 63px max(26px, calc((100% - 560px) / 2)) 48px;
+    }
+    .hash-gate h2 {
+        margin: 18px 0 15px;
+        color: #f0f1e9;
+        font:
+            700 clamp(55px, 8vw, 77px)/0.95 "Barlow Condensed",
+            sans-serif;
+        letter-spacing: 0.035em;
+    }
+    .hash-gate h2 span {
+        color: #b6d69e;
+    }
+    .hash-gate p {
+        max-width: 430px;
+        margin: 0 0 25px;
+        color: #a9b8a6;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    .hash-preview {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 15px;
+        border: 1px dashed #546b4c;
+        background: #202b20;
+        color: #a5bd99;
+        font:
+            10px "DM Mono",
+            monospace;
+        letter-spacing: 0.05em;
+    }
+    .hash-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        margin-top: 15px;
+        padding: 17px 19px;
+        border: 1px solid #a3c58c;
+        background: #3c573b;
+        color: #edf7e7;
+        font:
+            500 11px "DM Mono",
+            monospace;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+    .hash-button:hover {
+        background: #527251;
+    }
+    .hash-button span {
+        font-size: 18px;
+        line-height: 0.5;
+    }
+    .hash-button:focus-visible {
+        outline: 2px solid #e5bd80;
+        outline-offset: 4px;
+    }
+    .hash-gate small {
+        display: block;
+        margin-top: 17px;
+        color: #788c79;
+        font:
+            9px "DM Mono",
+            monospace;
+        letter-spacing: 0.07em;
     }
     .reveal-content {
         text-align: center;
@@ -426,6 +572,50 @@
     }
     h1 span {
         color: #e1826b;
+    }
+    .trap-warning {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        max-width: 470px;
+        margin: 22px auto 16px;
+        padding: 15px 18px;
+        border: 1px solid #a5544c;
+        border-left: 3px solid #e98270;
+        background: #31201e;
+        text-align: left;
+    }
+    .trap-icon {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        flex: none;
+        border: 1px solid #e98270;
+        border-radius: 50%;
+        color: #f3b2a2;
+        font:
+            600 17px "DM Mono",
+            monospace;
+    }
+    .trap-warning p {
+        margin: 0;
+        color: #f1b1a2;
+        font:
+            500 11px/1.6 "DM Mono",
+            monospace;
+        letter-spacing: 0.04em;
+    }
+    .trap-warning strong {
+        color: #ffe1d6;
+        font-size: 14px;
+    }
+    .trap-instructions {
+        display: block;
+        margin-top: 8px;
+        color: #cda99f;
+        font-size: 9px;
+        line-height: 1.7;
     }
     .subtitle {
         margin: 0 0 28px;
@@ -572,6 +762,7 @@
         .verification-progress span {
             transition: width 0.4s ease-out;
         }
+        :global(.js) .is-authorized .hash-gate,
         :global(.js) .is-revealed .reveal-content {
             animation: reveal-in 0.5s ease-out both;
         }
@@ -625,12 +816,33 @@
         }
     }
     @media (max-width: 600px) {
-        .verification-screen {
+        .verification-screen,
+        .hash-gate {
             min-height: 420px;
             padding: 65px 22px 45px;
         }
-        .verification-screen h2 {
+        .verification-screen h2,
+        .hash-gate h2 {
             font-size: clamp(52px, 13vw, 72px);
+        }
+        .hash-gate p {
+            font-size: 12px;
+        }
+        .hash-preview {
+            flex-direction: column;
+            font-size: 9px;
+        }
+        .hash-button {
+            font-size: 10px;
+        }
+        .trap-warning {
+            padding: 12px;
+        }
+        .trap-warning p {
+            font-size: 9px;
+        }
+        .trap-warning strong {
+            font-size: 12px;
         }
         .verification-step {
             font-size: 10px;

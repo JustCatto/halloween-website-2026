@@ -2,7 +2,7 @@
 
 This website was 100% vibecoded. It is a fictional Halloween prop: a classified-looking Catto Industries personnel file that turns a credential check into a Rickroll.
 
-The story follows Rick A., a Level 7 personnel record marked **Presumed Deceased** with a warning that the subject may be infected. A floating security monitor reports an impossible sighting. Visitors can dismiss and reopen the alert, inspect the dossier, and scan the QR code or click the verification button. The `/verify` page then stages a fake hash submission, credential check, and access denial before revealing the GIF and audio.
+The story follows Rick A., a Level 7 personnel record marked **Presumed Deceased** with a warning that the subject may be infected. A floating security monitor reports an impossible sighting. Visitors can dismiss and reopen the alert, inspect the dossier, and scan the QR code or click the verification button. The `/verify` page stages a fake hash submission and credential check, then grants access to a “View Verification Hash” button. Opening it flags the session as unauthorised access, dispatches fictional security personnel, and reveals the GIF and audio.
 
 **This is not a real ID, government service, security system, or verification process.** No hash is submitted and no credentials are checked.
 
@@ -31,7 +31,7 @@ Use `pnpm astro dev status`, `pnpm astro dev logs`, and `pnpm astro dev stop` to
 | Path | Purpose |
 | --- | --- |
 | `/` | Fictional personnel dossier, security alert, QR code, and verification link. |
-| `/verify` | Staged verification animation followed by the Rickroll reveal. |
+| `/verify` | Staged access grant, verification hash button, and Rickroll security-alert reveal. |
 | `public/verification-qr.svg` | QR code for the deployed `/verify` URL. |
 | `public/rickroll.gif`, `public/rickroll.mp3` | Locally served reveal media. |
 | `public/rickroll-still.png` | Still frame shown instead of the GIF for reduced-motion visitors. |
@@ -46,4 +46,4 @@ qrencode -t SVG -l M -m 2 -s 7 -o public/verification-qr.svg 'https://example.co
 
 The GIF was downloaded from [Giphy](https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif), and the roughly 17-second audio clip from [Myinstants](https://www.myinstants.com/media/sounds/rick-roll.mp3). Their usage rights have **not** been verified; check licensing and permissions before publishing or distributing the site.
 
-The reveal page attempts to play audio after the fake verification delay. Browsers often block autoplay with sound, especially on mobile, so it provides audio controls and a **Tap to play audio** fallback. No implementation can guarantee unmuted autoplay on every device.
+The reveal page calls `audio.play()` directly from the **View Verification Hash** click, which gives browsers a user gesture and makes sound playback more likely. It also provides audio controls and a **Tap to play audio** fallback if playback is blocked. No implementation can guarantee unmuted playback on every device.
