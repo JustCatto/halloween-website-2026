@@ -1,6 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#0b100e"/>
-  <path d="M32 4 56 18v28L32 60 8 46V18L32 4Z" fill="#141d18" stroke="#a9c294" stroke-width="2"/>
-  <path d="M42 23c-3-3-6-4-10-4-8 0-13 6-13 13s5 13 13 13c4 0 7-1 10-4" fill="none" stroke="#dce8d3" stroke-width="5"/>
-  <path d="M46 15v10M51 20H41" stroke="#ce806e" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+  <defs>
+    <mask id="i-clearance" maskUnits="userSpaceOnUse" x="0" y="0" width="42" height="42">
+      <path d="M0 0h42v42H0z" fill="white"/>
+      <path d="M28.5 12v8" fill="none" stroke="black" stroke-width="4"/>
+    </mask>
+  </defs>
+  <path d="M0 0h42v42H0z" fill="#0b100e"/>
+  <g color="#c7d6bd">
+    <path d="M21 2 38 11.5v19L21 40 4 30.5v-19L21 2Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <g mask="url(#i-clearance)">
+      <path id="ear" d="M16 14.8 17.3 9.4Q19.3 10.7 20.7 12.7Z" fill="currentColor"/>
+      <use href="#ear" transform="translate(43 0) scale(-1 1)"/>
+      <path d="M27.5 14.5c-1.6-1.4-3.6-2.1-6-2.1-5 0-8.4 3.6-8.4 8.6s3.4 8.6 8.4 8.6c2.4 0 4.4-.7 6-2.1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+    </g>
+    <path d="M28.5 12v8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  </g>
 </svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" role="img" aria-labelledby="title" style="color: var(--mark-color, #a4d997)">
+  <title id="title">Catto Industries cat C and I mark</title>
+  <defs>
+    <mask id="i-clearance" maskUnits="userSpaceOnUse" x="0" y="0" width="42" height="42">
+      <path d="M0 0h42v42H0z" fill="white"/>
+      <path d="M28.5 12v8" fill="none" stroke="black" stroke-width="4"/>
+    </mask>
+  </defs>
+
+  <g mask="url(#i-clearance)">
+    <path id="ear" d="M16 14.8 17.3 9.4Q19.3 10.7 20.7 12.7Z" fill="currentColor"/>
+    <use href="#ear" transform="translate(43 0) scale(-1 1)"/>
+    <path d="M27.5 14.5c-1.6-1.4-3.6-2.1-6-2.1-5 0-8.4 3.6-8.4 8.6s3.4 8.6 8.4 8.6c2.4 0 4.4-.7 6-2.1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+  </g>
+  <path d="M28.5 12v8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+</svg>

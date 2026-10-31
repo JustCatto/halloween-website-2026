@@ -37,18 +37,8 @@ const verificationUrl = "/verify";
                                     stroke="currentColor"
                                     stroke-width="1.5"
                                 />
-                                <path
-                                    d="M27.5 14.5c-1.6-1.4-3.6-2.1-6-2.1-5 0-8.4 3.6-8.4 8.6s3.4 8.6 8.4 8.6c2.4 0 4.4-.7 6-2.1"
-                                    stroke="currentColor"
-                                    stroke-width="3"
-                                    stroke-linecap="square"
-                                />
-                                <path
-                                    d="M30 11v7M33.5 14.5h-7"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                />
                             </svg>
+                            <span class="brand-mark-inner"></span>
                         </span>
                         <span class="brand-name">
                             CATTO <strong>INDUSTRIES</strong>
@@ -120,7 +110,7 @@ const verificationUrl = "/verify";
                         Status mismatch: Subject declared deceased.
                     </p>
                     <p class="telemetry-alert">
-                        LAST ACCESS: <time id="last-access">--:--</time> //
+                        LAST DETECTED: <time id="last-access">--:--</time> //
                         LOCATION UNKNOWN
                     </p>
                 </section>
@@ -232,7 +222,7 @@ const verificationUrl = "/verify";
                                 <div class="status-block">
                                     <div class="status-heading">
                                         <span class="field-label">
-                                            PERSONEL STATUS
+                                            PERSONNEL STATUS
                                         </span>
                                         <span class="status-pulse"></span>
                                     </div>
@@ -246,7 +236,7 @@ const verificationUrl = "/verify";
                         <div class="notes-block">
                             <div class="notes-heading">
                                 <span class="warning-icon">!</span>
-                                <span>PERSONEL NOTES</span>
+                                <span>PERSONNEL NOTES</span>
                                 <span class="notes-code">// HIGH PRIORITY</span>
                             </div>
                             <p>Subject assumed infected, do not approach!</p>
@@ -533,7 +523,18 @@ const verificationUrl = "/verify";
                         },
                         { threshold: 0.5 },
                     );
-                    observer.observe(statusBlock);
+                    const initialScrollY = window.scrollY;
+                    const startObservingOnScroll = () => {
+                        if (window.scrollY === initialScrollY) return;
+                        window.removeEventListener(
+                            "scroll",
+                            startObservingOnScroll,
+                        );
+                        observer.observe(statusBlock);
+                    };
+                    window.addEventListener("scroll", startObservingOnScroll, {
+                        passive: true,
+                    });
                 }
             }
 
@@ -662,6 +663,7 @@ const verificationUrl = "/verify";
         text-decoration: none;
     }
     .brand-mark {
+        position: relative;
         width: 43px;
         height: 43px;
         color: #c7d6bd;
@@ -671,6 +673,14 @@ const verificationUrl = "/verify";
     .brand-mark svg {
         width: 100%;
         height: 100%;
+    }
+    .brand-mark-inner {
+        position: absolute;
+        inset: 0;
+        background: currentColor;
+        -webkit-mask: url("/catto-industries-mark.svg") center / contain
+            no-repeat;
+        mask: url("/catto-industries-mark.svg") center / contain no-repeat;
     }
     .brand-name {
         font-family: "Barlow Condensed", sans-serif;
